@@ -20,17 +20,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8606)#+-!n=ewrb1&-4bg&kkzy_=)1=fn2b8)_9li9n@p3xr6b'
+SECRET_KEY = 'a83hllrx+4_ev44$*_(b-h+067m0pzj&gegrnf!c&y@!c9&(2x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'QuizzDynamoApp.apps.QuizzdynamoappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'QuizzDynamoApp/static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
