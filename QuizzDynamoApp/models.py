@@ -9,11 +9,11 @@ class Student(models.Model):
     password1 = models.CharField(max_length=20)
     password2 = models.CharField(max_length=20)
     DEGREE_CHOICES = (
-    ('bsc','Bsc'),
-    ('msc', 'Msc'),
-    ('pgdiploma','PGDiploma'),
+    ('Bsc','Bsc'),
+    ('Msc','Msc'),
+    ('PGDiploma','PGDiploma'),
     )
-    degree = models.CharField(max_length=3, choices=DEGREE_CHOICES, default='Bsc')
+    degree = models.CharField(max_length=15, choices=DEGREE_CHOICES, default='Bsc')
     
     def __str__(self):
         return self.username

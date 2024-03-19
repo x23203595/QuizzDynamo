@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.template import loader 
 from django.http import HttpResponse
 from .forms import StudentSignUpForm, StudentSignInForm
 from .models import Student
@@ -10,17 +11,26 @@ def WelcomePageMethod(request):
     context = {'form': StudentSignUpForm()}
     return render(request, 'QuizzDynamoApp/Welcome.html', context)
 
+def AdminPageMethod(request):
+    template_admin = loader.get_template('QuizzDynamoApp/admin.html')
+    context = {'template_admin':template_admin}
+    return HttpResponse(template_admin.render(context, request))
+
 def StudentSignUp(request):
     if request.method == "POST":
         try:
             studentsignupform = StudentSignUpForm(request.POST)
-            print(studentsignupform)
             if studentsignupform.is_valid():
                 student = studentsignupform.save()
                 studentsignupformusername = student.username
                 messages.success(request, "Account created for {}".format(studentsignupformusername))
-                degree = student  
-                return render(request, 'QuizzDynamoApp/Home.html', {'form': degree})
+                degree = student.degree
+                if(degree == 'Bsc'):
+                    return redirect('QuizzDynamoApp:BachelorSignUp')
+                elif(degree == 'Msc'):
+                    return redirect('QuizzDynamoApp:MasterSignUp')
+                elif(degree == 'PGDiploma'):
+                    return redirect('QuizzDynamoApp:PGDiplomaSignUp')
             else:
                 messages.error(request, "There was an error signing up")
                 return redirect('QuizzDynamoApp:Welcome')
@@ -30,7 +40,7 @@ def StudentSignUp(request):
     elif request.method == "GET":
         studentsignupform = StudentSignUpForm()
         return render(request, "QuizzDynamoApp/Welcome.html", {'form': studentsignupform})
-
+        
 def StudentSignIn(request):
     if request.method == "POST":
         studentsigninform = StudentSignInForm(request.POST)
@@ -38,8 +48,23 @@ def StudentSignIn(request):
         password = request.POST.get('password')
         studentcheck = Student.objects.get(username=username)
         if (studentcheck.password1 == password):
-            return render(request, 'QuizzDynamoApp/Home.html', {'form':studentcheck})
+            if (studentcheck.degree == 'Bsc'):
+                 return redirect('QuizzDynamoApp:BachelorSignUp')
+            elif (studentcheck.degree == 'Msc'):
+                 return redirect('QuizzDynamoApp:MasterSignUp')
+            elif (studentcheck.degree == 'PGDiploma'):
+                 return redirect('QuizzDynamoApp:PGDiplomaSignUp')
     studentsigninform = StudentSignInForm()
     return render(request, "QuizzDynamoApp/SignIn.html", {'form':studentsigninform}) 
-   
-           
+    
+def StudentBachelorsSignUp(request):
+    bsc_degree = Student.objects.get(degree='Bsc')
+    return render(request, 'QuizzDynamoApp/Bachelors.html', {'form':bsc_degree})
+
+def StudentMastersSignUp(request):
+    msc_degree = Student.objects.get(degree='Msc')
+    return render(request, 'QuizzDynamoApp/Masters.html', {'form':msc_degree})
+    
+def StudentPGDiplomaSignUp(request):
+    pgdiploma_degree = Student.objects.get(degree='PGDiploma')
+    return render(request, 'QuizzDynamoApp/PGDiploma.html', {'form':pgdiploma_degree})

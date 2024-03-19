@@ -16,7 +16,7 @@
 @keyframes change{
     80%
     {
-        background-image: url('/static/QuizzDynamoApp/images/Quiz2.jpg'); 
+        background-image: url('/static/QuizzDynamoApp/images/Quiz2s.jpg'); 
     }
 }
 
@@ -44,16 +44,20 @@
 }
 
 .form-row label {
-    font-weight: bold; 
+    font-weight: bolder; 
+    color: #000000;
 }
 
 .form-row input[type="text"],
 .form-row input[type="password"],
-.form-row input[type="email"] {
+.form-row input[type="email"] 
+.form-row select{
     width: 100%;
     padding: 10px; 
     border: 1px solid #ccc; 
     border-radius: 5px; 
+    color: ##000000;
+    font-weight: bolder;
 }
 
 .form-row.form-row-last {

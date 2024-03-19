@@ -38,11 +38,11 @@ class StudentSignUpForm(forms.ModelForm):
     email_address = forms.EmailField(validators=[validators.validate_email])
 
     DEGREE_CHOICES = (
-        ('bsc', 'Bsc'),
-        ('msc', 'Msc'),
-        ('pgdiploma', 'PGDiploma'),
+    ('Bsc','Bsc'),
+    ('Msc','Msc'),
+    ('PGDiploma','PGDiploma'),
     )
-
+    
     degree = forms.ChoiceField(choices=DEGREE_CHOICES, widget=forms.Select)
 
     class Meta:
