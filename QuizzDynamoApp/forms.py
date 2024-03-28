@@ -1,11 +1,15 @@
 from django import forms
 from django.core import validators
 from .models import Student
+from django import forms
 
+""" form for SignIn Page """
 class StudentSignInForm(forms.Form):
     username = forms.CharField(label="Username")
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
 
+
+"""form for Student Sign Up with validations"""
 class StudentSignUpForm(forms.ModelForm):
     name_regex = '\A[a-zA-Z]+\Z'
     username_regex = '^[a-zA-Z0-9]+$'
@@ -29,13 +33,11 @@ class StudentSignUpForm(forms.ModelForm):
     username = forms.CharField(validators=[
         validators.MinLengthValidator(min_length, validation_msg_min),
         validators.MaxLengthValidator(max_length, validation_msg_max),
-        validators.RegexValidator(username_regex)
+        validators.RegexValidator(username_regex), 
     ])
 
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
-
-    email_address = forms.EmailField(validators=[validators.validate_email])
 
     DEGREE_CHOICES = (
     ('Bsc','Bsc'),
@@ -47,8 +49,9 @@ class StudentSignUpForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ['first_name', 'last_name', 'username', 'password1', 'password2', 'degree', 'email_address']
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2', 'degree']
         widgets = {
             'password1': forms.PasswordInput(),
             'password2': forms.PasswordInput(),
         }
+

@@ -39,6 +39,7 @@
     <h2>Subjects</h2>
 </div>
 
+<!--Django Tag for username and degree-->
 <div class="tableusers">
     <table border="2">
         <thead></thead>
@@ -58,10 +59,11 @@
 <div class="custom-KeyPriorityDepartmentHeading">
     <div class="columnDepartment">
         <h2>Bachelor's</h2>
-        <button class="buttonColumn">Java</button>
-        <button class="buttonColumn">Operating Systems</button>
-        <button class="buttonColumn">Database Management Systems</button>
-        <button class="buttonColumn">Web Design & Applications</button>
+        <a href="{% url 'QuizzDynamoApp:BusinessIntelligenceQuizPage' %}" class="buttonColumn">Business Intelligence</a>
+        <a href="{% url 'QuizzDynamoApp:OperatingSystemsQuizPage' %}" class="buttonColumn">Operating Systems</a>
+        <a href="{% url 'QuizzDynamoApp:DatabaseManagementSystemsQuizPage' %}" class="buttonColumn">Database Management Systems</a>
+        <a href="{% url 'QuizzDynamoApp:LinuxQuizPage' %}" class="buttonColumn">Linux</a>
+        <a href="{% url 'QuizzDynamoApp:JavaQuizPage' %}" class="buttonColumn">Java</a>
     </div>
 </div>
  

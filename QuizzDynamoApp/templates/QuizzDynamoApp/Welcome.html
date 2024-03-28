@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{%url 'QuizzDynamoApp:Admin'%}">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Modules</a>
+                    <a class="nav-link" href="{%url 'QuizzDynamoApp:AdminUploadPage'%}">Modules</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Leaderboards</a>
@@ -41,6 +41,8 @@
   
 <div class = "section-newtop">
   
+  
+<!--Django Tags for User Registation in Welcome Page-->
  <div class="form-container">
         <div class="form-wrapper">
              {% block content %}
@@ -49,13 +51,6 @@
                         <div class="form-headingdetail">
                         <h2>Registration</h2>
                         </div>
-                            <ul>
-                        {% for field, errors in form.errors.items %}
-                            {% for error in errors %}
-                                <li>{{ field }}: {{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
                         <div class="form-row">
                              {{ form.first_name.label_tag }}
                              {{ form.first_name }}
@@ -76,11 +71,7 @@
                             {{ form.password2.label_tag }}
                             {{ form.password2 }}
                         </div>
-                        <div class="form-row">
-                            {{ form.email_address.label_tag }}
-                            {{ form.email_address }}
-                        </div>
-                        <div class="form-row">
+                       <div class="form-row">
                             {{ form.degree.label_tag }}
                             {{ form.degree }}
                         </div>
