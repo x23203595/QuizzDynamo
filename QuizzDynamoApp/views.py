@@ -7,7 +7,9 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from .models import Student, Quiz
-from .forms import StudentSignUpForm, StudentSignInForm
+from .forms import StudentSignUpForm, StudentSignInForm, AdminSignInForm
+import pandas as pd
+import io
 # Create your views here.
 
 """Welcome Page for Project. Loads StudentSignUpForm and it's fields in the page"""
@@ -20,6 +22,60 @@ def AdminPageMethod(request):
     template_admin = loader.get_template('QuizzDynamoApp/admin.html')
     context = {'template_admin':template_admin}
     return HttpResponse(template_admin.render(context, request))
+
+"""Sign Up Page for Admin"""
+def AdminSignInMethod(request):
+    if request.method == 'POST':
+        form = AdminSignInForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('QuizzDynamoApp:AdminSignInPage')
+            else:
+                error_message = 'Invalid username or password.'
+                return render(request, 'QuizzDynamoApp/Welcome.html', {'form': form, 'error_message': error_message})
+    else:
+        form = AdminSignInForm()
+    return render(request, 'QuizzDynamoApp/AdminSignIn.html', {'form': form})
+    
+"""Sign Up Page for Admin Modules"""
+def AdminSignInModulesMethod(request):
+    if request.method == 'POST':
+        form = AdminSignInForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('QuizzDynamoApp:AdminModulesPage')
+            else:
+                error_message = 'Invalid username or password.'
+                return render(request, 'QuizzDynamoApp/AdminSignInModules.html', {'form': form, 'error_message': error_message})
+    else:
+        form = AdminSignInForm()
+    return render(request, 'QuizzDynamoApp/AdminSignInModules.html', {'form': form})
+    
+"""Sign Up Page for Admin Student Sign In"""
+def AdminStudentSignInMethod(request):
+    if request.method == 'POST':
+        form = AdminSignInForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('QuizzDynamoApp:AdminStudentSignIn')
+            else:
+                error_message = 'Invalid username or password.'
+                return render(request, 'QuizzDynamoApp/Welcome.html', {'form': form, 'error_message': error_message})
+    else:
+        form = AdminSignInForm()
+    return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html', {'form': form})
 
 """Sign Up Page. Responsible for bringing up three different pages for BSc,
 MSc and PGDiploma on user submission of the degree"""
@@ -81,6 +137,11 @@ def StudentPGDiplomaSignUp(request):
     pgdiploma_degree = Student.objects.get(degree='PGDiploma')
     return render(request, 'QuizzDynamoApp/PGDiploma.html', {'form':pgdiploma_degree})
 
+"""AdminModules Page displaying the csv file to be uploaded"""
+def AdminModulesMethod(request):
+    context = {}
+    return render(request, 'QuizzDynamoApp/AdminModules.html', context)
+
 """Admin Page for uploading the csv files for the quizzes"""    
 def AdminUploadMethod(request):
     template = "QuizzDynamoApp/AdminModules.html"
@@ -93,25 +154,30 @@ def AdminUploadMethod(request):
     if request.method == "GET":
         return render(request, template, prompt)
     
-    csv_file = request.FILES['file']
+    csv_file = request.FILES.get('file')
+    if not csv_file:
+        messages.error(request, 'No file uploaded! Refresh to upload a file!')
+        return render(request, template, prompt)  
+    
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'THIS IS NOT A CSV FILE')
-        
+        return render(request, template, prompt)  
+    
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"): 
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         _, created = Quiz.objects.update_or_create(
             question_text=column[0],
             option_a=column[1],
             option_b=column[2],
             option_c=column[3],
             option_d=column[4],
-            correct_answer = column[5]
+            correct_answer=column[5]
         )
+        
+    return render(request, template)
     
-    context = {}
-    return render(request, template, context)
 
 """Method for Student List"""
 def AdminStudentListMethod(request):

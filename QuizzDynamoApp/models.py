@@ -1,7 +1,7 @@
 from django import forms
 from django.db import models
 
-"""model for Student class """
+"""model for Student class"""
 # Create your models here.
 class Student(models.Model):
     first_name = models.CharField(max_length=30)
@@ -18,8 +18,8 @@ class Student(models.Model):
     
     def __str__(self):
         return self.username
-
-"""Model for Quiz"""
+    
+"""Model for Quiz class"""
 class Quiz(models.Model):
     question_text = models.CharField(max_length=150)
     option_a = models.CharField(max_length=150)
@@ -30,28 +30,3 @@ class Quiz(models.Model):
     
     def __str__(self):
         return self.question_text
-        
-# """Model responsible for pointing Admin for student_degree"""
-# class Degree(models.Model):
-#     DEGREE_CHOICES = (
-#     ('Bsc','Bsc'),
-#     ('Msc','Msc'),
-#     ('PGDiploma','PGDiploma'),
-#     )
-#     degree = models.CharField(max_length=15, choices=DEGREE_CHOICES, default='Bsc')
-    
-        
-# """Model for Admin to add Student"""
-# class AdminForStudent(models.Model):
-#     student_first_name = models.CharField(max_length=30)
-#     student_last_name = models.CharField(max_length=30)
-#     student_username = models.ForeignKey(Student, on_delete=models.CASCADE)
-#     student_password1 = models.CharField(max_length=20)
-#     student_password2 = models.CharField(max_length=20)
-#     DEGREE_CHOICES = (
-#     ('Bsc','Bsc'),
-#     ('Msc','Msc'),
-#     ('PGDiploma','PGDiploma'),
-#     )
-#     student_degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
-    

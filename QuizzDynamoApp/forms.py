@@ -3,13 +3,13 @@ from django.core import validators
 from .models import Student
 from django import forms
 
-""" form for SignIn Page """
+"""Form for SignIn Page """
 class StudentSignInForm(forms.Form):
     username = forms.CharField(label="Username")
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
 
 
-"""form for Student Sign Up with validations"""
+"""Form for Student Sign Up with validations"""
 class StudentSignUpForm(forms.ModelForm):
     name_regex = '\A[a-zA-Z]+\Z'
     username_regex = '^[a-zA-Z0-9]+$'
@@ -55,31 +55,7 @@ class StudentSignUpForm(forms.ModelForm):
             'password2': forms.PasswordInput(),
         }
 
-# class AdminStudentForm(forms.ModelForm):
-    
-#     DEGREE_CHOICES = (
-#         ('Bsc', 'Bsc'),
-#         ('Msc', 'Msc'),
-#         ('PGDiploma', 'PGDiploma'),
-#     )
-    
-#     student_degree = forms.ChoiceField(choices=DEGREE_CHOICES, widget=forms.Select)
-#     student_password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-#     student_password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
-    
-#     class Meta:
-#         model = AdminForStudent
-#         fields = ['student_first_name', 'student_last_name', 'student_username', 'student_degree', 'student_password1', 'student_password2']
-#         labels = {
-#             'student_username': 'Student Username',
-#             'student_degree': 'Student Degree'
-#         }
-#         widgets = {
-#             'student_password1': forms.PasswordInput(),
-#             'student_password2': forms.PasswordInput(),
-#         }
-        
-    # def __init__(self, *args, **kwargs):
-    #     super(AdminStudentForm, self).__init__(*args, **kwargs)
-    #     self.fields['student_degree'].empty_label = "Select"
-    #     self.fields['student_username'].required = False
+"""Form for Admin Page"""
+class AdminSignInForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(widget=forms.PasswordInput)

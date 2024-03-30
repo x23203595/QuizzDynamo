@@ -35,10 +35,6 @@
     background-color: #006400;
 }
 
-input[type="file"] {
-  display: none;
-}
-
 .custom-file-upload {
   background-color: #008000;
     color: #ffffff;
