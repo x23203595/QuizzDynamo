@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>QuizzDynamo</title>
-    <link rel="stylesheet" href="{% static 'QuizzDynamoApp/css/adminuploadstyles.css' %}">   
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-   
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -25,36 +24,50 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sign Out</a>
                 </li>
+            </ul>
         </div>
     </div>
   </nav>
   
-   {% block content %}
- <div class="custom-KeyPriorityDepartmentHeading">
-    <div class="columnDepartment"> 
-  {% if messages %}
-        {% for message in messages %}
-            <div>
-                <strong>{{message|safe}}</strong>
-            </div>
+{% block content %}  
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Degree</th>
+            <th>
+                <a href="{% url 'QuizzDynamoApp:AdminStudentInsertPage' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New Student
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for AdminStudent in AdminStudentList %}
+        <tr>
+            <td>{{ AdminStudent.first_name }}</td>
+            <td>{{ AdminStudent.last_name }}</td>
+            <td>{{ AdminStudent.username }}</td>
+            <td>{{ AdminStudent.degree }}</td>
+            <td>
+                <a href="{% url 'QuizzDynamoApp:AdminStudentUpdatePage' AdminStudent.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+                <form action="{% url 'QuizzDynamoApp:AdminStudentDeletePage' AdminStudent.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
         {% endfor %}
-    {% else %}
-    {{order}}
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="file1"> Upload a file</label>
-        <input type="file" id="file1" name="file">
-        <small>Only accepts CSV files</small>
-        <button type="submit">Upload</button>
-    </form>
-    {% endif %}
-    {% for quiz in quizzes %}
-    {{quiz.name}}
-    {% endfor %}
-</div>
-</div>
+    </tbody>
+</table>
+{% endblock content %}
 
-   {% endblock content %}
 <footer class="bg-dark text-white text-center text-lg-start fixed-bottom">
   <div class="container-fluid p-3 row justify-content-center">
     <div class="row">

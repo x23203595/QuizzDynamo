@@ -1,0 +1,97 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>QuizzDynamo</title>
+           <link rel="stylesheet" href="{% static 'QuizzDynamoApp/css/adminstudentstyles.css' %}">  
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-flex-start">
+        </div>
+        <nav class="navbar-brand">QuizzDynamo</nav>
+         <div class="collapse navbar-collapse justify-content-end">
+             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Student Register</h1>
+            <p class="lead">Student List for QuizzDynamoApp</p>
+            <hr class="my-4">
+            <form action="" method="post" autocomplete="off">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-group">
+                    <label for="id_student_first_name">First Name:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_student_last_name">Last Name:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_student_username">Username:</label>
+                    {{ form.username }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_student_degree">Degree:</label>
+                            {{ form.degree }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="id_student_password1">Password:</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_student_password2">Enter Password Again:</label>
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-block btn-lg" href = "{% url 'QuizzDynamoApp:AdminStudentListPage' %}">
+                    <i class="fas fa-database"></i> Submit
+                </button>
+                <a href="{% url 'QuizzDynamoApp:AdminStudentListPage' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Student List
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<footer class="bg-dark text-white text-center text-lg-start fixed-bottom">
+  <div class="container-fluid p-3 row justify-content-center">
+    <div class="row">
+     <div class="text-center">
+       © Copyright: QuizzDynamo
+     </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

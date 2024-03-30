@@ -113,6 +113,36 @@ def AdminUploadMethod(request):
     context = {}
     return render(request, template, context)
 
+"""Method for Student List"""
+def AdminStudentListMethod(request):
+    context = {'AdminStudentList' : Student.objects.all()}
+    return render(request, 'QuizzDynamoApp/AdminStudentList.html', context)
+
+"""Method for Student Form"""
+def AdminStudentFormMethod(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            form = StudentSignUpForm()
+        else:
+            student = Student.objects.get(pk=id)
+            form = StudentSignUpForm(instance=student)
+        return render(request, 'QuizzDynamoApp/AdminStudent.html', {'form': form})
+    else:
+        if id == 0:
+            form = StudentSignUpForm(request.POST)
+        else:
+            student = Student.objects.get(pk=id)
+            form = StudentSignUpForm(request.POST, instance = student)
+        if form.is_valid():
+            form.save()
+        return redirect('QuizzDynamoApp:AdminStudentListPage')
+        
+"""Method for Student Delete"""
+def AdminStudentDelete(request, id):
+    student = Student.objects.get(pk=id)
+    student.delete()
+    return redirect('QuizzDynamoApp:AdminStudentListPage')
+
 """Page for displaying the questions of the quiz for BusinessIntelligence"""    
 def BusinessIntelligenceQuizMethod(request):
     if request.method == 'GET':
@@ -269,3 +299,4 @@ def JavaSubmissionMethod(request):
                 results[question.question_text] = 'wrong'
 
         return render(request, 'QuizzDynamoApp/JavaQuizSubmission.html', {'results': results})
+        
