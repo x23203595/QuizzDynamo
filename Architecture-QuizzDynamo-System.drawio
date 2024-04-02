@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-02T15:42:37.652Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="NI4pdW7lmbKz4FQi8iYv" version="24.2.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-02T15:42:51.196Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="3U6MUOXm9tZPTEAtzYKi" version="24.2.1" type="github">
   <diagram name="Page-1" id="DYBwWQCoP8_SHHaS1T1G">
     <mxGraphModel dx="1050" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -11,7 +11,7 @@
           <mxGeometry x="40.5" y="39" width="80" height="101" as="geometry" />
         </mxCell>
         <mxCell id="KRUjPpqpoe-eQDH3IDyl-3" value="AWS CodePipeline" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codepipeline;" vertex="1" parent="1">
-          <mxGeometry x="240" y="39.5" width="80" height="110" as="geometry" />
+          <mxGeometry x="200" y="39.5" width="80" height="110" as="geometry" />
         </mxCell>
         <mxCell id="KRUjPpqpoe-eQDH3IDyl-4" value="AWS CodeBuild" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.codebuild;" vertex="1" parent="1">
           <mxGeometry x="420" y="39" width="80" height="110" as="geometry" />
@@ -34,7 +34,7 @@
         <mxCell id="KRUjPpqpoe-eQDH3IDyl-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="120.5" y="80" as="sourcePoint" />
-            <mxPoint x="240" y="80" as="targetPoint" />
+            <mxPoint x="200" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
