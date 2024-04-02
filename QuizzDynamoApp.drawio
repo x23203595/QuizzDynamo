@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-02T17:40:51.778Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="L_bOr93I_rGsnn040L_R" version="24.2.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-02T19:21:52.597Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="1yr40z4qy0MuhuaDd18C" version="24.2.1" type="github">
   <diagram name="Page-1" id="_WHE07SAWM-UD9e7mWyt">
     <mxGraphModel dx="1050" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -25,13 +25,13 @@
         <mxCell id="sb6TI0KvWBGxcupaylAa-8" value="&lt;font&gt;&lt;span&gt;Admin Sign In&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
           <mxGeometry x="40" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sb6TI0KvWBGxcupaylAa-9" value="User Registration / Welcome" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
+        <mxCell id="sb6TI0KvWBGxcupaylAa-9" value="Student Registration / Welcome" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
           <mxGeometry x="200" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sb6TI0KvWBGxcupaylAa-11" value="&lt;span&gt;User Sign In&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="sb6TI0KvWBGxcupaylAa-11" value="&lt;span&gt;Student Sign In&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="400" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sb6TI0KvWBGxcupaylAa-12" value="&lt;font&gt;&lt;span&gt;About User&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="sb6TI0KvWBGxcupaylAa-12" value="&lt;font&gt;&lt;span&gt;About Student&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="400" y="360" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sb6TI0KvWBGxcupaylAa-16" value="" style="endArrow=none;html=1;rounded=0;fontStyle=1;fontFamily=Times New Roman;" parent="1" edge="1">
@@ -112,10 +112,10 @@
             <mxPoint x="620" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sb6TI0KvWBGxcupaylAa-32" value="&lt;span&gt;&lt;font&gt;Edit User&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
+        <mxCell id="sb6TI0KvWBGxcupaylAa-32" value="&lt;span&gt;&lt;font&gt;Edit Student&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
           <mxGeometry x="560" y="480" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="sb6TI0KvWBGxcupaylAa-33" value="&lt;font&gt;&lt;span&gt;Delete User&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
+        <mxCell id="sb6TI0KvWBGxcupaylAa-33" value="&lt;font&gt;&lt;span&gt;Delete Student&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Times New Roman;" parent="1" vertex="1">
           <mxGeometry x="720" y="480" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="sb6TI0KvWBGxcupaylAa-35" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.33;entryY=-0.023;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=1;fontFamily=Times New Roman;" parent="1" edge="1">
