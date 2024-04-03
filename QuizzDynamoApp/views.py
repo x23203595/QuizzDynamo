@@ -248,7 +248,7 @@ def AdminStudentFormMethod(request, newid=0):
             form.save()
         return redirect('QuizzDynamoApp:AdminStudentListPage')
 
-def AdminStudentDelete(request, newid): 
+def AdminStudentDelete(newid): 
     """Method for Student Delete"""
     student = Student.objects.get(pk=newid)
     student.delete()

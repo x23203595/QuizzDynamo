@@ -1,7 +1,6 @@
 """Path for QuizzDynamoApp"""
 from django.urls import path
 from . import views
-""""Path Page for different views of QuizzDynamo"""
 app_name = 'QuizzDynamoApp'
 urlpatterns = [
     path('',views.WelcomePageMethod,name='Welcome'),
