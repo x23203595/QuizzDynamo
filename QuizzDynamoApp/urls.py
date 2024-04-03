@@ -10,7 +10,7 @@ urlpatterns = [
     views.AboutPageMethod,name='About'),
     path('QuizzDynamoApp/Home/AdminAbout',
     views.AdminAboutPageMethod,name='AdminAbout'),
-    path('QuizzDynamoApp/Home/AdminSignOut', 
+    path('QuizzDynamoApp/Home/AdminSignOut',
     views.AdminSignOutPageMethod,name='AdminSignOut'),
     path('QuizzDynamoApp/Home/signup/',views.StudentSignUp,name='SignUp'),
     path('QuizzDynamoApp/Home/signin/',views.StudentSignIn,name='SignIn'),

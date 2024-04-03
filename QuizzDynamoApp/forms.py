@@ -50,6 +50,6 @@ class AdminSignInForm(forms.ModelForm):
     username = forms.CharField(label="Username")
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
     class Meta:
-         """Subclass for Admin"""
+        """Subclass for Admin"""
         model = Admin
         fields = ['username', 'password']

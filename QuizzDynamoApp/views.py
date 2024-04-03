@@ -1,3 +1,4 @@
+"""View for QuizzDynamo"""
 import csv
 import io
 from django.core.exceptions import ObjectDoesNotExist
@@ -49,7 +50,7 @@ def AdminSignInMethod(request):
                 admincheck = Admin.objects.get(username=username)
             except ObjectDoesNotExist:
                 error_message = "User does not exist. Please check your username."
-                return render(request, "QuizzDynamoApp/AdminSignIn.html", 
+                return render(request, "QuizzDynamoApp/AdminSignIn.html",
                 {'form': form, 'error_message': error_message})
             if  admincheck:
                 if admincheck.password == password:
@@ -109,7 +110,7 @@ def AdminStudentSignInMethod(request):
                 {'form': form, 'error_message': error_message})
     else:
         form = AdminSignInForm()
-    return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html', 
+    return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html',
     {'form': form})
 
 def StudentSignUp(request):
@@ -143,7 +144,7 @@ def StudentSignUp(request):
         {'form': studentsignupform})
         
 def StudentSignIn(request):
-    """Sign In Page. Responsible for bringing up three different pages for BSc,
+    """Sign In Page. Responsible for bringing up three different pages for BSc, 
     MSc and PGDiploma on user submission of the degree"""
     if request.method == "POST":
         studentsigninform = StudentSignInForm(request.POST)
@@ -153,7 +154,7 @@ def StudentSignIn(request):
             studentcheck = Student.objects.get(username=username)
         except ObjectDoesNotExist:
             error_message = "User does not exist. Please check your username."
-            return render(request, "QuizzDynamoApp/SignIn.html", 
+            return render(request, "QuizzDynamoApp/SignIn.html",
             {'form': studentsigninform, 'error_message': error_message})
         if studentcheck.password1 == password:
             if studentcheck.degree == 'Bsc':
@@ -163,7 +164,7 @@ def StudentSignIn(request):
             elif studentcheck.degree == 'PGDiploma':
                 return redirect('QuizzDynamoApp:PGDiplomaSignUp')
         error_message = "Invalid username or password."
-        return render(request, "QuizzDynamoApp/SignIn.html", 
+        return render(request, "QuizzDynamoApp/SignIn.html",
         {'form': studentsigninform, 'error_message': error_message})
     studentsigninform = StudentSignInForm()
     return render(request, "QuizzDynamoApp/SignIn.html",
@@ -188,7 +189,7 @@ def StudentMastersSignUp(request):
 def StudentPGDiplomaSignUp(request):
     """PG Diploma Degree Quiz Page and it's respective subjects"""
     pgdiploma_degree = Student.objects.get(degree='PGDiploma')
-    return render(request, 'QuizzDynamoApp/PGDiploma.html', 
+    return render(request, 'QuizzDynamoApp/PGDiploma.html',
     {'form':pgdiploma_degree})
 
 def AdminUploadMethod(request):
@@ -204,10 +205,10 @@ def AdminUploadMethod(request):
     csv_file = request.FILES.get('file')
     if not csv_file:
         messages.error(request, 'No file uploaded! Refresh to upload a file!')
-        return render(request, template, prompt)  
+        return render(request, template, prompt)
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'THIS IS NOT A CSV FILE')
-        return render(request, template, prompt)  
+        return render(request, template, prompt)
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
@@ -284,7 +285,7 @@ def BusinessIntelligenceSubmissionMethod(request):
         'QuizzDynamoApp/BusinessIntelligenceQuizSubmission.html',
         {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
 
 def OperatingSystemsQuizMethod(request):
@@ -314,7 +315,7 @@ def OperatingSystemsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/OperatingSystemsQuizSubmission.html',
         {'results': results})
         
@@ -332,7 +333,7 @@ def DatabaseManagementSystemsQuizMethod(request):
         
 def DatabaseManagementSystemsSubmissionMethod(request):
     """Page for displaying the results of the quiz for Database Management 
-    Systems""" 
+    Systems"""
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
@@ -358,7 +359,7 @@ def LinuxQuizMethod(request):
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/LinuxQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
    
 def LinuxSubmissionMethod(request):
@@ -532,7 +533,7 @@ def WebDesignAppSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/WenDesign&AppQuizSubmission.html', {'results': results})
     else:
         return JsonResponse({'status': 'error',
@@ -577,7 +578,7 @@ def MobileDevelopmentQuizMethod(request):
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/MobileDevelopmentQuiz.html', context)
     else:
         return JsonResponse({'status': 'error',
@@ -599,9 +600,10 @@ def MobileDevelopmentSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/MobileDevelopmentQuizSubmission.html',
         {'results': results})
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
+        
