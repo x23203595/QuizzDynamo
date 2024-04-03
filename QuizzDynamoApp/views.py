@@ -168,8 +168,8 @@ def StudentSignIn(request):
         {'form': studentsigninform, 'error_message': error_message})
     studentsigninform = StudentSignInForm()
     return render(request, "QuizzDynamoApp/SignIn.html",
-    {'form': studentsigninform}) 
-    
+    {'form': studentsigninform})
+
 def StudentSignOut(request):
     """User Sign Out for QuizzDynamo"""
     template_usersignout = loader.get_template('QuizzDynamoApp/SignOut.html')
@@ -247,7 +247,7 @@ def AdminStudentFormMethod(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('QuizzDynamoApp:AdminStudentListPage')
-        
+
 def AdminStudentDelete(request, id):
     """Method for Student Delete"""
     student = Student.objects.get(pk=id)
@@ -318,7 +318,7 @@ def OperatingSystemsSubmissionMethod(request):
         return render(request,
         'QuizzDynamoApp/OperatingSystemsQuizSubmission.html',
         {'results': results})
-        
+
 def DatabaseManagementSystemsQuizMethod(request):
     """Page for displaying the questions of the quiz for Database 
     Management Systems"""
@@ -330,7 +330,7 @@ def DatabaseManagementSystemsQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-        
+
 def DatabaseManagementSystemsSubmissionMethod(request):
     """Page for displaying the results of the quiz for Database Management 
     Systems"""
@@ -351,7 +351,7 @@ def DatabaseManagementSystemsSubmissionMethod(request):
         return render(request,
         'QuizzDynamoApp/DatabaseManagementSystemsQuizSubmission.html',
         {'results': results})
-    
+
 def LinuxQuizMethod(request):
     """Page for displaying the questions of the quiz for Linux"""
     if request.method == 'GET':
@@ -361,7 +361,7 @@ def LinuxQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-   
+
 def LinuxSubmissionMethod(request):
     """Page for displaying the results of the quiz for Linux"""
     if request.method == 'POST':
@@ -380,7 +380,7 @@ def LinuxSubmissionMethod(request):
                 results[question.question_text] = 'wrong'
         return render(request,'QuizzDynamoApp/LinuxQuizSubmission.html',
         {'results': results})
-        
+
 def JavaQuizMethod(request):
     """Page for displaying the questions of the quiz for Java"""
     if request.method == 'GET':
@@ -390,7 +390,7 @@ def JavaQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-        
+
 def JavaSubmissionMethod(request):
     """Page for displaying the results of the quiz for Java"""    
     if request.method == 'POST':
@@ -420,7 +420,7 @@ def NetworkingConceptsQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def NetworkingConceptsSubmissionMethod(request):
     """Page for displaying the results of the quiz for Networking Concepts"""
     if request.method == 'POST':
@@ -454,7 +454,7 @@ def SocialNetworkAnalysisQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def SocialNetworkAnalysisSubmissionMethod(request):
     """Page for displaying the results of the quiz for Social Network Analysis"""
     if request.method == 'POST':
@@ -477,7 +477,7 @@ def SocialNetworkAnalysisSubmissionMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-        
+
 def AlgorithmsQuizMethod(request):
     """Page for displaying the questions of the quiz for Algorithms"""
     if request.method == 'GET':
@@ -487,7 +487,7 @@ def AlgorithmsQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def AlgorithmsSubmissionMethod(request):
     """Page for displaying the results of the quiz for Algorithms"""
     if request.method == 'POST':
@@ -506,7 +506,7 @@ def AlgorithmsSubmissionMethod(request):
                 results[question.question_text] = 'wrong'
         return render(request,
         'QuizzDynamoApp/AlgorithmsQuizSubmission.html',{'results': results})
-        
+
 def WebDesignAppQuizMethod(request):
     """Page for displaying the questions of the quiz for Web Design & App"""
     if request.method == 'GET':
@@ -516,7 +516,7 @@ def WebDesignAppQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def WebDesignAppSubmissionMethod(request):
     """Page for displaying the results of the quiz for Web Design & App"""
     if request.method == 'POST':
@@ -538,7 +538,7 @@ def WebDesignAppSubmissionMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def InternetworkingQuizMethod(request):
     """Page for displaying the questions of the quiz for Internetworking"""
     if request.method == 'GET':
@@ -549,7 +549,7 @@ def InternetworkingQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def InternetworkingSubmissionMethod(request):
     """Page for displaying the results of the quiz for Internetworking"""
     if request.method == 'POST':
@@ -572,7 +572,7 @@ def InternetworkingSubmissionMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-        
+
 def MobileDevelopmentQuizMethod(request):
     """Page for displaying the questions of the quiz for Mobile Development"""
     if request.method == 'GET':
@@ -583,7 +583,7 @@ def MobileDevelopmentQuizMethod(request):
     else:
         return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
-    
+
 def MobileDevelopmentSubmissionMethod(request):
     """Page for displaying the results of the quiz for Mobile Development"""
     if request.method == 'POST':
