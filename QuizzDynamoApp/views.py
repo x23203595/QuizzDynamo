@@ -181,11 +181,6 @@ def StudentPGDiplomaSignUp(request):
     pgdiploma_degree = Student.objects.get(degree='PGDiploma')
     return render(request, 'QuizzDynamoApp/PGDiploma.html', {'form':pgdiploma_degree})
 
-def AdminModulesMethod(request):
-    """AdminModules Page displaying the csv file to be uploaded"""
-    context = {}
-    return render(request, 'QuizzDynamoApp/AdminModules.html', context)
-
 def AdminUploadMethod(request):
     """Admin Page for uploading the csv files for the quizzes"""    
     template = "QuizzDynamoApp/AdminModules.html"

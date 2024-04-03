@@ -12,7 +12,6 @@ urlpatterns = [
     path('QuizzDynamoApp/Home/signup/', views.StudentSignUp, name='SignUp'),
     path('QuizzDynamoApp/Home/signin/', views.StudentSignIn, name='SignIn'),
     path('QuizzDynamoApp/Home/signout/', views.StudentSignOut, name = 'SignOut'),
-    path('QuizzDynamoApp/Home/Display/AdminModules/', views.AdminModulesMethod, name = 'AdminModulesDisplayPage'),
     path('QuizzDynamoApp/Home/AdminSignIn/', views.AdminSignInMethod, name = 'AdminSignInPage'),
     path('QuizzDynamoApp/Home/AdminSignInModules/', views.AdminSignInModulesMethod, name = 'AdminSignInModulesPage'),
     path('QuizzDynamoApp/Home/AdminStudentSignIn/', views.AdminStudentSignInMethod, name = 'AdminStudentSignInPage'),
