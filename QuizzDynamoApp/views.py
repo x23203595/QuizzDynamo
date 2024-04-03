@@ -228,7 +228,7 @@ def AdminStudentListMethod(request):
     context = {'AdminStudentList' : Student.objects.all()}
     return render(request, 'QuizzDynamoApp/AdminStudentList.html', context)
 
-def AdminStudentFormMethod(request, newid=0): 
+def AdminStudentFormMethod(request, newid=0):
     """Method for Student Form"""
     if request.method == "GET":
         if newid == 0:
@@ -248,7 +248,7 @@ def AdminStudentFormMethod(request, newid=0):
             form.save()
         return redirect('QuizzDynamoApp:AdminStudentListPage')
 
-def AdminStudentDelete(newid): 
+def AdminStudentDelete(newid):
     """Method for Student Delete"""
     student = Student.objects.get(pk=newid)
     student.delete()
