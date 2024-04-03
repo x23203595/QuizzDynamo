@@ -25,7 +25,9 @@ SECRET_KEY = 'a83hllrx+4_ev44$*_(b-h+067m0pzj&gegrnf!c&y@!c9&(2x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = [
+    '7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com',
+    'x23203595Quizzapp-env.eba-fp6mvn2f.eu-west-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -132,4 +134,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com']
+    'https://7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com',
+    'https://x23203595Quizzapp-env.eba-fp6mvn2f.eu-west-1.elasticbeanstalk.com',
+    'http://x23203595Quizzapp-env.eba-fp6mvn2f.eu-west-1.elasticbeanstalk.com']
