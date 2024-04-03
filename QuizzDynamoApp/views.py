@@ -36,7 +36,7 @@ def AdminSignOutPageMethod(request):
 
 def AdminPageMethod(request):
     """Bringing up the Admin Page for necessary changes"""
-    admin_page = Admin.objects.all(username=username)
+    admin_page = Admin.objects.all(username=username)# pylint: disable=E0602
     return render(request, 'QuizzDynamoApp/Admin.html', {'form': admin_page})
 
 def AdminSignInMethod(request):
@@ -87,7 +87,7 @@ def AdminSignInModulesMethod(request):
         form = AdminSignInForm()
         return render(request, 'QuizzDynamoApp/AdminSignInModules.html',
         {'form': form})
-    
+
 def AdminStudentSignInMethod(request):
     """Sign Up Page for Admin Modules"""
     if request.method == 'POST':
@@ -142,7 +142,7 @@ def StudentSignUp(request):
         studentsignupform = StudentSignUpForm()
         return render(request, "QuizzDynamoApp/Welcome.html",
         {'form': studentsignupform})
-        
+
 def StudentSignIn(request):
     """Sign In Page. Responsible for bringing up three different pages for BSc, 
     MSc and PGDiploma on user submission of the degree"""
@@ -213,7 +213,7 @@ def AdminUploadMethod(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Quiz.objects.update_or_create(# pylint: disable=W0718
+        _, created = Quiz.objects.update_or_create(# pylint: disable=W0612
             question_text=column[0],
             option_a=column[1],
             option_b=column[2],
@@ -228,29 +228,29 @@ def AdminStudentListMethod(request):
     context = {'AdminStudentList' : Student.objects.all()}
     return render(request, 'QuizzDynamoApp/AdminStudentList.html', context)
 
-def AdminStudentFormMethod(request, id=0):
+def AdminStudentFormMethod(request, newid=0): 
     """Method for Student Form"""
     if request.method == "GET":
-        if id == 0:
+        if newid == 0:
             form = StudentSignUpForm()
         else:
-            student = Student.objects.get(pk=id)
+            student = Student.objects.get(pk=newid)
             form = StudentSignUpForm(instance=student)
         return render(request, 'QuizzDynamoApp/AdminStudent.html',
         {'form': form})
     else:
-        if id == 0:
+        if newid == 0:
             form = StudentSignUpForm(request.POST)
         else:
-            student = Student.objects.get(pk=id)
+            student = Student.objects.get(pk=newid)
             form = StudentSignUpForm(request.POST, instance = student)
         if form.is_valid():
             form.save()
         return redirect('QuizzDynamoApp:AdminStudentListPage')
 
-def AdminStudentDelete(request, id):
+def AdminStudentDelete(request, newid): 
     """Method for Student Delete"""
-    student = Student.objects.get(pk=id)
+    student = Student.objects.get(pk=newid)
     student.delete()
     return redirect('QuizzDynamoApp:AdminStudentListPage')
 

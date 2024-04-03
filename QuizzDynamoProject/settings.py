@@ -131,5 +131,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = 
-['https://7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com']
+CSRF_TRUSTED_ORIGINS = ['https://7f2f1eb7d7b64ea5a240a1a17413c956.vfs.cloud9.eu-west-1.amazonaws.com']
