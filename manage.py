@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""manage for QuizzDynamoApp"""
 import os
 import sys
 
