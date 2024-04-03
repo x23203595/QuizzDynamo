@@ -2,7 +2,7 @@ import csv
 import io
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
-from django.template import loader 
+from django.template import loader
 from django.http import HttpResponse
 from django.contrib import messages
 from django.http import JsonResponse
@@ -51,12 +51,12 @@ def AdminSignInMethod(request):
                 error_message = "User does not exist. Please check your username."
                 return render(request, "QuizzDynamoApp/AdminSignIn.html", 
                 {'form': form, 'error_message': error_message})
-            if (admincheck):
+            if  admincheck:
                 if admincheck.password == password:
                     return redirect('QuizzDynamoApp:Admin')
             else:
                 error_message = 'Invalid username or password.'
-                return render(request, 'QuizzDynamoApp/AdminSignIn.html', 
+                return render(request, 'QuizzDynamoApp/AdminSignIn.html',
                 {'form': form, 'error_message': error_message})
     else:
         form = AdminSignInForm()
@@ -75,7 +75,7 @@ def AdminSignInModulesMethod(request):
                 error_message = "User does not exist. Please check your username."""
                 return render(request, "QuizzDynamoApp/AdminSignInModules.html",
                 {'form': form, 'error_message': error_message})
-            if (admincheck):
+            if  admincheck:
                 if admincheck.password == password:
                     return redirect('QuizzDynamoApp:AdminUploadPage')
             else:
@@ -84,8 +84,8 @@ def AdminSignInModulesMethod(request):
                 {'form': form, 'error_message': error_message})
     else:
         form = AdminSignInForm()
-    return render(request, 'QuizzDynamoApp/AdminSignInModules.html', 
-    {'form': form})
+        return render(request, 'QuizzDynamoApp/AdminSignInModules.html',
+        {'form': form})
     
 def AdminStudentSignInMethod(request):
     """Sign Up Page for Admin Modules"""
@@ -100,7 +100,7 @@ def AdminStudentSignInMethod(request):
                 error_message = "User does not exist. Please check your username."""
                 return render(request, "QuizzDynamoApp/AdminStudentSignIn.html",
                 {'form': form, 'error_message': error_message})
-            if (admincheck):
+            if  admincheck:
                 if admincheck.password == password:
                     return redirect('QuizzDynamoApp:AdminStudentInsertPage')
             else:
@@ -111,7 +111,7 @@ def AdminStudentSignInMethod(request):
         form = AdminSignInForm()
     return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html', 
     {'form': form})
-    
+
 def StudentSignUp(request):
     """Sign Up Page. Responsible for bringing up three different pages for BSc,
     MSc and PGDiploma on user submission of the degree"""
@@ -121,7 +121,7 @@ def StudentSignUp(request):
             if studentsignupform.is_valid():
                 student = studentsignupform.save()
                 studentsignupformusername = student.username
-                messages.success(request, 
+                messages.success(request,
                 f"Account created for {studentsignupformusername}")
                 degree = student.degree
                 if(degree == 'Bsc'):
@@ -134,12 +134,12 @@ def StudentSignUp(request):
                 messages.error(request, "There was an error signing up")
                 return redirect('QuizzDynamoApp:Welcome')
         except Exception as e:# pylint: disable=W0718
-            messages.error(request, 
+            messages.error(request,
             "There was an error creating your account", e)
             return redirect('QuizzDynamoApp:Welcome')
     elif request.method == "GET":
         studentsignupform = StudentSignUpForm()
-        return render(request, "QuizzDynamoApp/Welcome.html", 
+        return render(request, "QuizzDynamoApp/Welcome.html",
         {'form': studentsignupform})
         
 def StudentSignIn(request):
@@ -166,7 +166,7 @@ def StudentSignIn(request):
         return render(request, "QuizzDynamoApp/SignIn.html", 
         {'form': studentsigninform, 'error_message': error_message})
     studentsigninform = StudentSignInForm()
-    return render(request, "QuizzDynamoApp/SignIn.html", 
+    return render(request, "QuizzDynamoApp/SignIn.html",
     {'form': studentsigninform}) 
     
 def StudentSignOut(request):
@@ -261,7 +261,7 @@ def BusinessIntelligenceQuizMethod(request):
         return render(request, 'QuizzDynamoApp/BusinessIntelligenceQuiz.html',
         context)
     else:
-        return JsonResponse({'status': 'error', 'message': 
+        return JsonResponse({'status': 'error', 'message':
             'Invalid request method'})
 
 def BusinessIntelligenceSubmissionMethod(request):
@@ -269,7 +269,7 @@ def BusinessIntelligenceSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -280,7 +280,7 @@ def BusinessIntelligenceSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/BusinessIntelligenceQuizSubmission.html',
         {'results': results})
     else:
@@ -292,10 +292,10 @@ def OperatingSystemsQuizMethod(request):
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/OperatingSystemsQuiz.html',context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
 
 def OperatingSystemsSubmissionMethod(request):
@@ -303,7 +303,7 @@ def OperatingSystemsSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -315,19 +315,19 @@ def OperatingSystemsSubmissionMethod(request):
             else:
                 results[question.question_text] = 'wrong'
         return render(request, 
-        'QuizzDynamoApp/OperatingSystemsQuizSubmission.html', 
+        'QuizzDynamoApp/OperatingSystemsQuizSubmission.html',
         {'results': results})
         
 def DatabaseManagementSystemsQuizMethod(request):
-    """Page for displaying the questions of the quiz for Database Management 
-    Systems"""
+    """Page for displaying the questions of the quiz for Database 
+    Management Systems"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/DatabaseManagementSystemsQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
         
 def DatabaseManagementSystemsSubmissionMethod(request):
@@ -336,7 +336,7 @@ def DatabaseManagementSystemsSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -347,8 +347,8 @@ def DatabaseManagementSystemsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
-        'QuizzDynamoApp/DatabaseManagementSystemsQuizSubmission.html', 
+        return render(request,
+        'QuizzDynamoApp/DatabaseManagementSystemsQuizSubmission.html',
         {'results': results})
     
 def LinuxQuizMethod(request):
@@ -366,7 +366,7 @@ def LinuxSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -377,7 +377,7 @@ def LinuxSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 'QuizzDynamoApp/LinuxQuizSubmission.html', 
+        return render(request,'QuizzDynamoApp/LinuxQuizSubmission.html',
         {'results': results})
         
 def JavaQuizMethod(request):
@@ -387,7 +387,7 @@ def JavaQuizMethod(request):
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/JavaQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
         
 def JavaSubmissionMethod(request):
@@ -395,7 +395,7 @@ def JavaSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -406,18 +406,18 @@ def JavaSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
-        'QuizzDynamoApp/JavaQuizSubmission.html', {'results': results})
+        return render(request,
+        'QuizzDynamoApp/JavaQuizSubmission.html',{'results': results})
 
 def NetworkingConceptsQuizMethod(request):
     """Page for displaying the questions of the quiz for Networking Concepts"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
-        'QuizzDynamoApp/NetworkingConceptsQuiz.html', context)
+        return render(request,
+        'QuizzDynamoApp/NetworkingConceptsQuiz.html',context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def NetworkingConceptsSubmissionMethod(request):
@@ -425,7 +425,7 @@ def NetworkingConceptsSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -436,11 +436,11 @@ def NetworkingConceptsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
-        'QuizzDynamoApp/NetworkingConceptsQuizSubmission.html', 
+        return render(request,
+        'QuizzDynamoApp/NetworkingConceptsQuizSubmission.html',
         {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
 
 def SocialNetworkAnalysisQuizMethod(request):
@@ -448,10 +448,10 @@ def SocialNetworkAnalysisQuizMethod(request):
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/SocialNetworkAnalysisQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def SocialNetworkAnalysisSubmissionMethod(request):
@@ -459,7 +459,7 @@ def SocialNetworkAnalysisSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -470,11 +470,11 @@ def SocialNetworkAnalysisSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
-        'QuizzDynamoApp/SocialNetworkAnalysisQuizSubmission.html', 
+        return render(request,
+        'QuizzDynamoApp/SocialNetworkAnalysisQuizSubmission.html',
         {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
         
 def AlgorithmsQuizMethod(request):
@@ -484,7 +484,7 @@ def AlgorithmsQuizMethod(request):
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/AlgorithmsQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def AlgorithmsSubmissionMethod(request):
@@ -492,7 +492,7 @@ def AlgorithmsSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -503,8 +503,8 @@ def AlgorithmsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
-        'QuizzDynamoApp/AlgorithmsQuizSubmission.html', {'results': results})
+        return render(request,
+        'QuizzDynamoApp/AlgorithmsQuizSubmission.html',{'results': results})
         
 def WebDesignAppQuizMethod(request):
     """Page for displaying the questions of the quiz for Web Design & App"""
@@ -513,7 +513,7 @@ def WebDesignAppQuizMethod(request):
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/WebDesign&AppQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def WebDesignAppSubmissionMethod(request):
@@ -521,7 +521,7 @@ def WebDesignAppSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -535,7 +535,7 @@ def WebDesignAppSubmissionMethod(request):
         return render(request, 
         'QuizzDynamoApp/WenDesign&AppQuizSubmission.html', {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def InternetworkingQuizMethod(request):
@@ -543,10 +543,10 @@ def InternetworkingQuizMethod(request):
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
         context = {'quiz_questions': quiz_questions}
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/InternetworkingQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def InternetworkingSubmissionMethod(request):
@@ -554,7 +554,7 @@ def InternetworkingSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -565,11 +565,11 @@ def InternetworkingSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-        return render(request, 
+        return render(request,
         'QuizzDynamoApp/InternetworkingQuizSubmission.html',
         {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
         
 def MobileDevelopmentQuizMethod(request):
@@ -580,7 +580,7 @@ def MobileDevelopmentQuizMethod(request):
         return render(request, 
         'QuizzDynamoApp/MobileDevelopmentQuiz.html', context)
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})
     
 def MobileDevelopmentSubmissionMethod(request):
@@ -588,7 +588,7 @@ def MobileDevelopmentSubmissionMethod(request):
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
-            if key.startswith('option_'): 
+            if key.startswith('option_'):
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
         quiz_questions = Quiz.objects.all()
@@ -600,8 +600,8 @@ def MobileDevelopmentSubmissionMethod(request):
             else:
                 results[question.question_text] = 'wrong'
         return render(request, 
-        'QuizzDynamoApp/MobileDevelopmentQuizSubmission.html', 
+        'QuizzDynamoApp/MobileDevelopmentQuizSubmission.html',
         {'results': results})
     else:
-        return JsonResponse({'status': 'error', 
+        return JsonResponse({'status': 'error',
         'message': 'Invalid request method'})

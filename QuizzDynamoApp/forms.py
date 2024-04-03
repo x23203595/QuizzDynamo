@@ -37,8 +37,9 @@ class StudentSignUpForm(forms.ModelForm):
     )
     degree = forms.ChoiceField(choices=DEGREE_CHOICES, widget=forms.Select)
     class Meta:
+        """Subclass for Student"""
         model = Student
-        fields = ['first_name', 'last_name', 'username', 'password1', 
+        fields = ['first_name', 'last_name', 'username', 'password1',
         'password2', 'degree']
         widgets = {
             'password1': forms.PasswordInput(),
@@ -49,5 +50,6 @@ class AdminSignInForm(forms.ModelForm):
     username = forms.CharField(label="Username")
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
     class Meta:
+         """Subclass for Admin"""
         model = Admin
         fields = ['username', 'password']
