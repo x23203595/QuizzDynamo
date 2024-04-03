@@ -1,0 +1,11 @@
+﻿question_text,option_a,option_b,option_c,option_d,correct_answer
+What is the primary goal of Business Intelligence (BI)?,A) To collect data,B) To analyze data,C) To visualize data,D) To store data,B) To analyze data
+Which of the following is NOT a component of BI?,A) Data Warehouse,B) Data Mining,C) Decision Support System (DSS),D) Customer Relationship Management (CRM),D) Customer Relationship Management (CRM)
+Which data visualization technique is used to show hierarchical data structures?,A) Scatter Plot,B) Pie Chart,C) Tree Map,D) Line Graph,C) Tree Map
+What is OLAP in the context of Business Intelligence?,A) Online Analytical Processing,B) Online Analytical Programming,C) Online Analytical Presentation,D) Online Analytical Prediction,A) Online Analytical Processing
+Which type of analysis is used to discover hidden patterns in large datasets?,A) Descriptive Analysis,B) Predictive Analysis,C) Diagnostic Analysis,D) Prescriptive Analysis,B) Predictive Analysis
+What does ETL stand for in the context of data warehousing?,"A) Extract, Transfer, Load","B) Extract, Transform, Load","C) Extract, Translate, Load","D) Extract, Transaction, Load","B) Extract, Transform, Load"
+Which data mining technique is used to segment customers based on their behavior?,A) Clustering,B) Classification,C) Association,D) Regression,A) Clustering
+What is the purpose of a BI dashboard?,A) To process data,B) To display key performance indicators (KPIs),C) To store metadata,D) To perform predictive analysis,B) To display key performance indicators (KPIs)
+Which of the following is NOT a characteristic of a data warehouse?,A) Subject-oriented,B) Volatile,C) Integrated,D) Time-variant,B) Volatile
+What role does SQL play in Business Intelligence?,A) It is used for data visualization,B) It is used for data analysis,C) It is used for data integration,D) It is used for data retrieval and manipulation,D) It is used for data retrieval and manipulation

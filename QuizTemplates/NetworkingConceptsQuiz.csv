@@ -1,0 +1,11 @@
+﻿question_text,option_a,option_b,option_c,option_d,correct_answer
+What does PoP stand for?,A) Pre Office Protocol,B) Post Office Protocol,C) Protocol of Post,D) None,B) PoP stands for Post Office Protocol
+What is the port number of PoP,A) 35,B) 43,C) 110,D) 25,C) The ports number of PoP is 110
+What is the number of layers in the OSI model?,A) 2 layers,B) 4 layers,C) 7 layers ,D) 9 layers,C) OSI model consists of 7 layers
+The full form of OSI is ,A) Operating Systems Interface,B) Optical System interconnection,C) Operating System Internet,D) Open System Interconnection,D) OSI stands for Open system interconnection.
+Identify the layer which provides service to the user,A) Session layer ,B) Application layer,C) Presentation layer,D) Physical layer,B) Application layer provides service to the user.
+What is a HUB?,A) Software,B) Computing Device,C) Network Device ,D) Calculating Device,C) A HUB is a network device
+What does a set of rules define?,A) SMTP,B) FTP,C) IMAP,D) Protocol,D)  Protocol defines a set of rules.
+Identify among the following which is mainly used to host web site.,A) Mail Server,B) Web Server,C) Database Server,D) None,B) Web server is mainly used to host web site.
+Identify the full form of HTTP?,A) HyperText Transfer Protocol,B) HyperText Transfer Package,C) Hyper Transfer Text Package,D) Hyper Transfer Text Practice,A)  HTTPS stands for HyperText Transfer Protocol
+Identify the protocol primarily used for browsing data.,A) FTP,B) TCP,C) TFTP ,D) HTTP,D) HTTP is used for browsing data.

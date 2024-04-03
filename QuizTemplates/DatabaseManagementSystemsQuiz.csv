@@ -1,0 +1,11 @@
+﻿question_text,option_a,option_b,option_c,option_d,correct_answer
+What is a Database Management System (DBMS)?,A) Software used to create computer networks,B) Application software used to create and manage databases,C) Programming Language,D) Hardware device used to store data,Correct Answer: B
+Which of the following is not a type of DBMS?,A) Relational DBMS,B) NoSQL DBMS,C)  Object-Oriented DBMS,D) Sequential DBMS,Correct Answer: D
+What does SQL stand for?,A) Structured Query Language,B) Structured Question Language,C) Sequential Query Language, D) Simple Question Language,Correct Answer: B
+Which SQL command is used to retrieve data from a database?,A) SEARCH,B) SELECT,C) RETRIEVE,D) FIND,Correct Answer: B
+What is a primary key in a relational database?,A) A unique identifier for each record in a table,B) A key used for primary operations on the database,C) A key used to sort data in a table,D) A key used for encryption purposes,Correct Answer: B
+What is normalization in DBMS?,A) The process of organizing data in a database to reduce redundancy and dependency,B) The process of optimizing a database for faster performance,C) The process of converting data into a standard format,D) The process of encrypting data in a database,Correct Answer: C
+"Which type of join returns all rows from both tables, joining records only where the keys are equal?",A) Inner Join,B) Left Outer Join,C) Right Outer Join,D) Full Outer Join,Correct Answer: A
+Which SQL command is used to add new rows to a table?,A) INSERT INTO         ,B) ADD ROW ,C) CREATE ROW,D) UPDATE TABLE,Correct Answer: A
+"What is the purpose of the ""DROP TABLE"" command in SQL?",A) To delete a table from the database,B)  To remove all data from a table,C) To add a new table to the database,D) To modify the structure of a table,Correct Answer: B
+Which type of constraint enforces a column to contain only unique values?,A) Primary Key Constraint  ,B) Foreign Key Constraint ,C) Unique Constraint,D) Check Constraint,Correct Answer: C

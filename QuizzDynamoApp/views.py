@@ -1,4 +1,5 @@
 import csv, io
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.template import loader 
 from django.http import HttpResponse, HttpResponseBadRequest
@@ -6,52 +7,77 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from .models import Student, Quiz
+from .models import Student, Quiz, Admin
 from .forms import StudentSignUpForm, StudentSignInForm, AdminSignInForm
-import pandas as pd
-import io
-# Create your views here.
+from django.contrib.auth.forms import AuthenticationForm
 
-"""Welcome Page for Project. Loads StudentSignUpForm and it's fields in the page"""
+# Create your views here.
 def WelcomePageMethod(request):
+    """Welcome Page for QuizzDynamo. Loads StudentSignUpForm and it's fields in 
+    the page"""
     context = {'form': StudentSignUpForm()}
     return render(request, 'QuizzDynamoApp/Welcome.html', context)
 
-"""Bringing up the Admin Page for necessary changes"""
-def AdminPageMethod(request):
-    template_admin = loader.get_template('QuizzDynamoApp/admin.html')
-    context = {'template_admin':template_admin}
-    return HttpResponse(template_admin.render(context, request))
+def AboutPageMethod(request):
+    """About Page for QuizzDynamo"""
+    template_about = loader.get_template('QuizzDynamoApp/About.html')
+    context = {'template_about':template_about}
+    return HttpResponse(template_about.render(context, request))
 
-"""Sign Up Page for Admin"""
+def AdminAboutPageMethod(request):
+    """Admin About Page for QuizzDynamo"""
+    template_adminabout = loader.get_template('QuizzDynamoApp/AdminAbout.html')
+    context = {'template_adminabout':template_adminabout}
+    return HttpResponse(template_adminabout.render(context, request))
+
+def AdminSignOutPageMethod(request):
+    """Admin Sign Out Page for QuizzDynamo"""
+    template_adminsignout = loader.get_template('QuizzDynamoApp/AdminSignOut.html')
+    context = {'template_adminsignout':template_adminsignout}
+    return HttpResponse(template_adminsignout.render(context, request))
+
+def AdminPageMethod(request):
+    """Bringing up the Admin Page for necessary changes"""
+    admin_page = Admin.objects.all(username=username)
+    return render(request, 'QuizzDynamoApp/Admin.html', {'form': admin_page})
+
 def AdminSignInMethod(request):
+    """Sign Up Page for Admin"""
     if request.method == 'POST':
         form = AdminSignInForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('QuizzDynamoApp:AdminSignInPage')
+            try:
+                admincheck = Admin.objects.get(username=username)
+            except ObjectDoesNotExist:
+                error_message = "User does not exist. Please check your username."
+                return render(request, "QuizzDynamoApp/AdminSignIn.html", {'form': form, 'error_message': error_message})
+            if (admincheck):
+                if admincheck.password == password:
+                    return redirect('QuizzDynamoApp:Admin')
             else:
                 error_message = 'Invalid username or password.'
-                return render(request, 'QuizzDynamoApp/Welcome.html', {'form': form, 'error_message': error_message})
+                return render(request, 'QuizzDynamoApp/AdminSignIn.html', {'form': form, 'error_message': error_message})
     else:
         form = AdminSignInForm()
     return render(request, 'QuizzDynamoApp/AdminSignIn.html', {'form': form})
-    
-"""Sign Up Page for Admin Modules"""
+
 def AdminSignInModulesMethod(request):
+    """Sign Up Page for Admin Modules"""
     if request.method == 'POST':
         form = AdminSignInForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('QuizzDynamoApp:AdminModulesPage')
+            try:
+                admincheck = Admin.objects.get(username=username)
+            except ObjectDoesNotExist:
+                error_message = "User does not exist. Please check your username."
+                return render(request, "QuizzDynamoApp/AdminSignInModules.html", {'form': form, 'error_message': error_message})
+            if (admincheck):
+                if admincheck.password == password:
+                    return redirect('QuizzDynamoApp:AdminUploadPage')
             else:
                 error_message = 'Invalid username or password.'
                 return render(request, 'QuizzDynamoApp/AdminSignInModules.html', {'form': form, 'error_message': error_message})
@@ -59,27 +85,31 @@ def AdminSignInModulesMethod(request):
         form = AdminSignInForm()
     return render(request, 'QuizzDynamoApp/AdminSignInModules.html', {'form': form})
     
-"""Sign Up Page for Admin Student Sign In"""
 def AdminStudentSignInMethod(request):
+    """Sign Up Page for Admin Modules"""
     if request.method == 'POST':
         form = AdminSignInForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('QuizzDynamoApp:AdminStudentSignIn')
+            try:
+                admincheck = Admin.objects.get(username=username)
+            except ObjectDoesNotExist:
+                error_message = "User does not exist. Please check your username."
+                return render(request, "QuizzDynamoApp/AdminStudentSignIn.html", {'form': form, 'error_message': error_message})
+            if (admincheck):
+                if admincheck.password == password:
+                    return redirect('QuizzDynamoApp:AdminStudentInsertPage')
             else:
                 error_message = 'Invalid username or password.'
-                return render(request, 'QuizzDynamoApp/Welcome.html', {'form': form, 'error_message': error_message})
+                return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html', {'form': form, 'error_message': error_message})
     else:
         form = AdminSignInForm()
     return render(request, 'QuizzDynamoApp/AdminStudentSignIn.html', {'form': form})
-
-"""Sign Up Page. Responsible for bringing up three different pages for BSc,
-MSc and PGDiploma on user submission of the degree"""
+    
 def StudentSignUp(request):
+    """Sign Up Page. Responsible for bringing up three different pages for BSc,
+MSc and PGDiploma on user submission of the degree"""
     if request.method == "POST":
         try:
             studentsignupform = StudentSignUpForm(request.POST)
@@ -104,65 +134,75 @@ def StudentSignUp(request):
         studentsignupform = StudentSignUpForm()
         return render(request, "QuizzDynamoApp/Welcome.html", {'form': studentsignupform})
         
-"""Sign In Page. Responsible for bringing up three different pages for BSc,
-MSc and PGDiploma on user submission of the degree"""
 def StudentSignIn(request):
+    """Sign In Page. Responsible for bringing up three different pages for BSc,
+    MSc and PGDiploma on user submission of the degree"""
     if request.method == "POST":
         studentsigninform = StudentSignInForm(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
-        studentcheck = Student.objects.get(username=username)
-        if (studentcheck.password1 == password):
-            if (studentcheck.degree == 'Bsc'):
-                 return redirect('QuizzDynamoApp:BachelorSignUp')
-            elif (studentcheck.degree == 'Msc'):
-                 return redirect('QuizzDynamoApp:MasterSignUp')
-            elif (studentcheck.degree == 'PGDiploma'):
-                 return redirect('QuizzDynamoApp:PGDiplomaSignUp')
+        try:
+            studentcheck = Student.objects.get(username=username)
+        except ObjectDoesNotExist:
+            error_message = "User does not exist. Please check your username."
+            return render(request, "QuizzDynamoApp/SignIn.html", 
+            {'form': studentsigninform, 'error_message': error_message})
+        if studentcheck.password1 == password:
+            if studentcheck.degree == 'Bsc':
+                return redirect('QuizzDynamoApp:BachelorSignUp')
+            elif studentcheck.degree == 'Msc':
+                return redirect('QuizzDynamoApp:MasterSignUp')
+            elif studentcheck.degree == 'PGDiploma':
+                return redirect('QuizzDynamoApp:PGDiplomaSignUp')
+        error_message = "Invalid username or password."
+        return render(request, "QuizzDynamoApp/SignIn.html", 
+        {'form': studentsigninform, 'error_message': error_message})
     studentsigninform = StudentSignInForm()
-    return render(request, "QuizzDynamoApp/SignIn.html", {'form':studentsigninform}) 
+    return render(request, "QuizzDynamoApp/SignIn.html", {'form': studentsigninform}) 
+    
+def StudentSignOut(request):
+    """User Sign Out for QuizzDynamo"""
+    template_usersignout = loader.get_template('QuizzDynamoApp/SignOut.html')
+    context = {'template_usersignout':template_usersignout}
+    return HttpResponse(template_usersignout.render(context, request))
 
-"""Bachelor's Degree Quiz Page and it's respective subjects"""
 def StudentBachelorsSignUp(request):
+    """Bachelor's Degree Quiz Page and it's respective subjects"""
     bsc_degree = Student.objects.get(degree='Bsc')
     return render(request, 'QuizzDynamoApp/Bachelors.html', {'form':bsc_degree})
 
-"""Master's Degree Quiz Page and it's respective subjects"""
 def StudentMastersSignUp(request):
+    """Master's Degree Quiz Page and it's respective subjects"""
     msc_degree = Student.objects.get(degree='Msc')
     return render(request, 'QuizzDynamoApp/Masters.html', {'form':msc_degree})
 
-"""PG Diploma Degree Quiz Page and it's respective subjects"""
 def StudentPGDiplomaSignUp(request):
+    """PG Diploma Degree Quiz Page and it's respective subjects"""
     pgdiploma_degree = Student.objects.get(degree='PGDiploma')
     return render(request, 'QuizzDynamoApp/PGDiploma.html', {'form':pgdiploma_degree})
 
-"""AdminModules Page displaying the csv file to be uploaded"""
 def AdminModulesMethod(request):
+    """AdminModules Page displaying the csv file to be uploaded"""
     context = {}
     return render(request, 'QuizzDynamoApp/AdminModules.html', context)
 
-"""Admin Page for uploading the csv files for the quizzes"""    
 def AdminUploadMethod(request):
+    """Admin Page for uploading the csv files for the quizzes"""    
     template = "QuizzDynamoApp/AdminModules.html"
     data = Quiz.objects.all()
     prompt = {
         'order': 'Order of the CSV should be question_text, option_a, option_b, option_c, option_d',
         'quizzes': data    
     }
-    
     if request.method == "GET":
         return render(request, template, prompt)
-    
     csv_file = request.FILES.get('file')
     if not csv_file:
         messages.error(request, 'No file uploaded! Refresh to upload a file!')
         return render(request, template, prompt)  
-    
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'THIS IS NOT A CSV FILE')
         return render(request, template, prompt)  
-    
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
@@ -175,24 +215,23 @@ def AdminUploadMethod(request):
             option_d=column[4],
             correct_answer=column[5]
         )
-        
     return render(request, template)
-    
 
-"""Method for Student List"""
 def AdminStudentListMethod(request):
+    """Method for Student List"""
     context = {'AdminStudentList' : Student.objects.all()}
     return render(request, 'QuizzDynamoApp/AdminStudentList.html', context)
 
-"""Method for Student Form"""
 def AdminStudentFormMethod(request, id=0):
+    """Method for Student Form"""
     if request.method == "GET":
         if id == 0:
             form = StudentSignUpForm()
         else:
             student = Student.objects.get(pk=id)
             form = StudentSignUpForm(instance=student)
-        return render(request, 'QuizzDynamoApp/AdminStudent.html', {'form': form})
+        return render(request, 'QuizzDynamoApp/AdminStudent.html',
+        {'form': form})
     else:
         if id == 0:
             form = StudentSignUpForm(request.POST)
@@ -203,33 +242,31 @@ def AdminStudentFormMethod(request, id=0):
             form.save()
         return redirect('QuizzDynamoApp:AdminStudentListPage')
         
-"""Method for Student Delete"""
 def AdminStudentDelete(request, id):
+    """Method for Student Delete"""
     student = Student.objects.get(pk=id)
     student.delete()
     return redirect('QuizzDynamoApp:AdminStudentListPage')
 
-"""Page for displaying the questions of the quiz for BusinessIntelligence"""    
 def BusinessIntelligenceQuizMethod(request):
+    """Page for displaying the questions of the quiz for BusinessIntelligence""" 
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
-
         context = {'quiz_questions': quiz_questions}
-        return render(request, 'QuizzDynamoApp/BusinessIntelligenceQuiz.html', context)
+        return render(request, 'QuizzDynamoApp/BusinessIntelligenceQuiz.html',
+        context)
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
-"""Page for displaying the results of the quiz for BusinessIntelligence"""    
 def BusinessIntelligenceSubmissionMethod(request):
+    """Page for displaying the results of the quiz for BusinessIntelligence"""
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
             if key.startswith('option_'): 
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
-
         quiz_questions = Quiz.objects.all()
-
         results = {}
         for question in quiz_questions:
             submitted_answer = submitted_answers.get(question.id)
@@ -237,32 +274,30 @@ def BusinessIntelligenceSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-
-        return render(request, 'QuizzDynamoApp/BusinessIntelligenceQuizSubmission.html', {'results': results})
+        return render(request, 
+        'QuizzDynamoApp/BusinessIntelligenceQuizSubmission.html',
+        {'results': results})
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
-"""Page for displaying the questions of the quiz for Operating Systems"""
 def OperatingSystemsQuizMethod(request):
+    """Page for displaying the questions of the quiz for Operating Systems"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
-
         context = {'quiz_questions': quiz_questions}
-        return render(request, 'QuizzDynamoApp/OperatingSystemsQuiz.html', context)
+        return render(request, 'QuizzDynamoApp/OperatingSystemsQuiz.html',context)
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-        
-"""Page for displaying the results of the quiz for Operating Systems"""    
+
 def OperatingSystemsSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Operating Systems"""   
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
             if key.startswith('option_'): 
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
-
         quiz_questions = Quiz.objects.all()
-
         results = {}
         for question in quiz_questions:
             submitted_answer = submitted_answers.get(question.id)
@@ -270,30 +305,30 @@ def OperatingSystemsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-
-        return render(request, 'QuizzDynamoApp/OperatingSystemsQuizSubmission.html', {'results': results})
+        return render(request, 
+        'QuizzDynamoApp/OperatingSystemsQuizSubmission.html', 
+        {'results': results})
         
-"""Page for displaying the questions of the quiz for Database Management Systems"""
 def DatabaseManagementSystemsQuizMethod(request):
+    """Page for displaying the questions of the quiz for Database Management 
+    Systems"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
-
         context = {'quiz_questions': quiz_questions}
-        return render(request, 'QuizzDynamoApp/DatabaseManagementSystemsQuiz.html', context)
+        return render(request, 
+        'QuizzDynamoApp/DatabaseManagementSystemsQuiz.html', context)
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
         
-"""Page for displaying the results of the quiz for Database Management Systems"""    
 def DatabaseManagementSystemsSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Database Management Systems""" 
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
             if key.startswith('option_'): 
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
-
         quiz_questions = Quiz.objects.all()
-
         results = {}
         for question in quiz_questions:
             submitted_answer = submitted_answers.get(question.id)
@@ -301,30 +336,28 @@ def DatabaseManagementSystemsSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-
-        return render(request, 'QuizzDynamoApp/DatabaseManagementSystemsQuizSubmission.html', {'results': results})
+        return render(request, 
+        'QuizzDynamoApp/DatabaseManagementSystemsQuizSubmission.html', 
+        {'results': results})
     
-"""Page for displaying the questions of the quiz for Linux"""
 def LinuxQuizMethod(request):
+    """Page for displaying the questions of the quiz for Linux"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
-
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/LinuxQuiz.html', context)
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-        
-"""Page for displaying the results of the quiz for Linux"""    
+   
 def LinuxSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Linux""" 
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
             if key.startswith('option_'): 
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
-
         quiz_questions = Quiz.objects.all()
-
         results = {}
         for question in quiz_questions:
             submitted_answer = submitted_answers.get(question.id)
@@ -332,30 +365,26 @@ def LinuxSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
-
         return render(request, 'QuizzDynamoApp/LinuxQuizSubmission.html', {'results': results})
         
-"""Page for displaying the questions of the quiz for Java"""
 def JavaQuizMethod(request):
+    """Page for displaying the questions of the quiz for Java"""
     if request.method == 'GET':
         quiz_questions = Quiz.objects.all()
-
         context = {'quiz_questions': quiz_questions}
         return render(request, 'QuizzDynamoApp/JavaQuiz.html', context)
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
         
-"""Page for displaying the questions of the quiz for Java"""    
 def JavaSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Java"""    
     if request.method == 'POST':
         submitted_answers = {}
         for key, value in request.POST.items():
             if key.startswith('option_'): 
                 question_id = key.split('_')[1]
                 submitted_answers[int(question_id)] = value
-
         quiz_questions = Quiz.objects.all()
-
         results = {}
         for question in quiz_questions:
             submitted_answer = submitted_answers.get(question.id)
@@ -363,6 +392,187 @@ def JavaSubmissionMethod(request):
                 results[question.question_text] = 'right'
             else:
                 results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/JavaQuizSubmission.html', {'results': results})
 
-        return render(request, 'QuizzDynamoApp/JavaQuizSubmission.html', {'results': results})
+def NetworkingConceptsQuizMethod(request):
+    """Page for displaying the questions of the quiz for Networking Concepts"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/NetworkingConceptsQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def NetworkingConceptsSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Networking Concepts"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/NetworkingConceptsQuizSubmission.html', 
+        {'results': results})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def SocialNetworkAnalysisQuizMethod(request):
+    """Page for displaying the questions of the quiz for Social Network Analysis"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/SocialNetworkAnalysisQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def SocialNetworkAnalysisSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Social Network Analysis"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/SocialNetworkAnalysisQuizSubmission.html', 
+        {'results': results})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
         
+def AlgorithmsQuizMethod(request):
+    """Page for displaying the questions of the quiz for Algorithms"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/AlgorithmsQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def AlgorithmsSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Algorithms"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/AlgorithmsQuizSubmission.html', {'results': results})
+        
+def WebDesignAppQuizMethod(request):
+    """Page for displaying the questions of the quiz for Web Design & App"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/WebDesign&AppQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def WebDesignAppSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Web Design & App"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/WenDesign&AppQuizSubmission.html', {'results': results})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def InternetworkingQuizMethod(request):
+    """Page for displaying the questions of the quiz for Internetworking"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/InternetworkingQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def InternetworkingSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Internetworking"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/InternetworkingQuizSubmission.html',
+        {'results': results})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+        
+def MobileDevelopmentQuizMethod(request):
+    """Page for displaying the questions of the quiz for Mobile Development"""
+    if request.method == 'GET':
+        quiz_questions = Quiz.objects.all()
+        context = {'quiz_questions': quiz_questions}
+        return render(request, 'QuizzDynamoApp/MobileDevelopmentQuiz.html', context)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    
+def MobileDevelopmentSubmissionMethod(request):
+    """Page for displaying the results of the quiz for Mobile Development"""
+    if request.method == 'POST':
+        submitted_answers = {}
+        for key, value in request.POST.items():
+            if key.startswith('option_'): 
+                question_id = key.split('_')[1]
+                submitted_answers[int(question_id)] = value
+        quiz_questions = Quiz.objects.all()
+        results = {}
+        for question in quiz_questions:
+            submitted_answer = submitted_answers.get(question.id)
+            if submitted_answer == question.correct_answer:
+                results[question.question_text] = 'right'
+            else:
+                results[question.question_text] = 'wrong'
+        return render(request, 
+        'QuizzDynamoApp/MobileDevelopmentQuizSubmission.html', 
+        {'results': results})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})

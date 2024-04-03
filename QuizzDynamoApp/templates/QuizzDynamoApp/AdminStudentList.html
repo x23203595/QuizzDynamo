@@ -1,34 +1,40 @@
+<!--Admin Student List-->
 {% load static %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
     <title>QuizzDynamo</title>
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel = "stylesheet" 
+href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <div class="collapse navbar-collapse justify-content-flex-start">
+            <ul class="navbar-nav">
+                 <li class="nav-item">
+                    <a class="nav-link" 
+                href="{%url 'QuizzDynamoApp:AdminSignOut'%}">Admin Sign Out</a>
+                </li>
+            </ul>
         </div>
         <nav class="navbar-brand">QuizzDynamo</nav>
          <div class="collapse navbar-collapse justify-content-end">
              <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+               <li class="nav-item">
+                    <a class="nav-link" 
+                href="{%url 'QuizzDynamoApp:AdminAbout'%}">Admin About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Out</a>
-                </li>
-            </ul>
         </div>
     </div>
   </nav>
-  
 {% block content %}  
 <table class="table table-borderless">
     <thead class="border-bottom font-weight-bold">
@@ -38,7 +44,8 @@
             <th>Username</th>
             <th>Degree</th>
             <th>
-                <a href="{% url 'QuizzDynamoApp:AdminStudentInsertPage' %}" class="btn btn-outline-success">
+<a href="{% url 'QuizzDynamoApp:AdminStudentInsertPage' %}" 
+class="btn btn-outline-success">
                     <i class="fas fa-plus"></i> Add New Student
                 </a>
             </th>
@@ -52,10 +59,12 @@
             <td>{{ AdminStudent.username }}</td>
             <td>{{ AdminStudent.degree }}</td>
             <td>
-                <a href="{% url 'QuizzDynamoApp:AdminStudentUpdatePage' AdminStudent.id %}" class="btn text-secondary px-0">
+<a href="{% url 'QuizzDynamoApp:AdminStudentUpdatePage' AdminStudent.id %}" 
+class="btn text-secondary px-0">
                     <i class="far fa-edit fa-lg"></i>
                 </a>
-                <form action="{% url 'QuizzDynamoApp:AdminStudentDeletePage' AdminStudent.id %}" method="post" class="d-inline">
+<form action="{% url 'QuizzDynamoApp:AdminStudentDeletePage' AdminStudent.id %}" 
+method="post" class="d-inline">
                     {% csrf_token %}
                     <button type="submit" class="btn">
                         <i class="far fa-trash-alt fa-lg text-danger"></i>
@@ -67,7 +76,6 @@
     </tbody>
 </table>
 {% endblock content %}
-
 <footer class="bg-dark text-white text-center text-lg-start fixed-bottom">
   <div class="container-fluid p-3 row justify-content-center">
     <div class="row">
@@ -77,6 +85,5 @@
     </div>
   </div>
 </footer>
-
 </body>
 </html>

@@ -1,13 +1,18 @@
+<!--Operating Systems Quiz Page Submission-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'QuizzDynamoApp/css/newoperatingsystemssubmissionstyles.css' %}">
+    <link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" 
+rel="stylesheet"
+integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" 
+        crossorigin="anonymous">
+        <link rel="stylesheet" 
+    href="{% static 'QuizzDynamoApp/css/newoperatingsystemssubmissionstyles.css' %}">
 <title>QuizzDynamo</title>
-</head>
+   </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -19,10 +24,8 @@
          <div class="collapse navbar-collapse justify-content-end">
              <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Out</a>
+                    <a class="nav-link" 
+                    href="{%url 'QuizzDynamoApp:SignOut'%}">Sign Out</a>
                 </li>
         </div>
     </div>
@@ -38,5 +41,19 @@
         </li>
       {% endfor %}
       </ul>
+   <a href="{%url 'QuizzDynamoApp:BachelorSignUp'%}" class="btn btn-primary"
+   role="button">Bachelor's</a>
     </div>
   </div>
+  {% endblock content %}
+<footer class="bg-dark text-white text-center text-lg-start fixed-bottom">
+  <div class="container-fluid p-3 row justify-content-center">
+    <div class="row">
+     <div class="text-center">
+       © Copyright: QuizzDynamo
+     </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

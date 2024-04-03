@@ -1,14 +1,17 @@
 from django.urls import path
 from . import views
 from django.shortcuts import get_object_or_404
-
 """"Path Page for different views of QuizzDynamo"""
 app_name = 'QuizzDynamoApp'
 urlpatterns = [ 
     path('', views.WelcomePageMethod, name='Welcome'),
     path('admin/', views.AdminPageMethod, name = 'Admin'),
+    path('QuizzDynamoApp/Home/About', views.AboutPageMethod, name = 'About'),
+    path('QuizzDynamoApp/Home/AdminAbout', views.AdminAboutPageMethod, name = 'AdminAbout'),
+    path('QuizzDynamoApp/Home/AdminSignOut', views.AdminSignOutPageMethod, name = 'AdminSignOut'),
     path('QuizzDynamoApp/Home/signup/', views.StudentSignUp, name='SignUp'),
     path('QuizzDynamoApp/Home/signin/', views.StudentSignIn, name='SignIn'),
+    path('QuizzDynamoApp/Home/signout/', views.StudentSignOut, name = 'SignOut'),
     path('QuizzDynamoApp/Home/Display/AdminModules/', views.AdminModulesMethod, name = 'AdminModulesDisplayPage'),
     path('QuizzDynamoApp/Home/AdminSignIn/', views.AdminSignInMethod, name = 'AdminSignInPage'),
     path('QuizzDynamoApp/Home/AdminSignInModules/', views.AdminSignInModulesMethod, name = 'AdminSignInModulesPage'),
@@ -31,4 +34,16 @@ urlpatterns = [
     path('QuizzDynamoApp/Home/LinuxQuizSubmission/', views.LinuxSubmissionMethod, name='LinuxSubmissionPage'),
     path('QuizzDynamoApp/Home/JavaQuiz/', views.JavaQuizMethod, name='JavaQuizPage'),
     path('QuizzDynamoApp/Home/JavaQuizSubmission/', views.JavaSubmissionMethod, name='JavaSubmissionPage'),
+    path('QuizzDynamoApp/Home/NetworkingConceptsQuiz/', views.NetworkingConceptsQuizMethod, name = 'NetworkingConceptsQuizPage'),
+    path('QuizzDynamoApp/Home/NetworkingConceptsQuizSubmission/', views.NetworkingConceptsSubmissionMethod, name = 'NetworkingConceptsSubmissionPage'),
+    path('QuizzDynamoApp/Home/SocialNetworkAnalysisQuiz/', views.SocialNetworkAnalysisQuizMethod, name = 'SocialNetworkAnalysisQuizPage'),
+    path('QuizzDynamoApp/Home/SocialNetworkAnalysisQuizSubmission/', views.SocialNetworkAnalysisSubmissionMethod, name = 'SocialNetworkAnalysisSubmissionPage'),
+    path('QuizzDynamoApp/Home/AlgorithmsQuiz/', views.AlgorithmsQuizMethod, name = 'AlgorithmsQuizPage'),
+    path('QuizzDynamoApp/Home/AlgorithmsQuizSubmission/', views.AlgorithmsSubmissionMethod, name = 'AlgorithmsSubmissionPage'),
+    path('QuizzDynamoApp/Home/WebDesign&AppQuiz/', views.WebDesignAppQuizMethod, name = 'WebDesignAppQuizPage'),
+    path('QuizzDynamoApp/Home/WebDesign&AppQuizSubmission/', views.WebDesignAppSubmissionMethod, name = 'WebDesignAppSubmissionPage'),
+    path('QuizzDynamoApp/Home/InternetworkingQuiz/', views.InternetworkingQuizMethod, name = 'InternetworkingQuizPage'),
+    path('QuizzDynamoApp/Home/InternetworkingQuizSubmission/', views.InternetworkingSubmissionMethod, name = 'InternetworkingSubmissionPage'),
+    path('QuizzDynamoApp/Home/MobileDevelopmentQuiz/', views.MobileDevelopmentQuizMethod, name = 'MobileDevelopmentQuizPage'),
+    path('QuizzDynamoApp/Home/MobileDevelopmentQuizSubmission/', views.MobileDevelopmentSubmissionMethod, name = 'MobileDevelopmentSubmissionPage'),
 ]

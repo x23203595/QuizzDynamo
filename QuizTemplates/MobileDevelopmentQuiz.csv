@@ -1,0 +1,11 @@
+﻿question_text,option_a,option_b,option_c,option_d,correct_answer
+What is an activity in android?,A) android class,B) android package,C) A single screen in an application with supporting java code,D) None of the above,C) A activity is a single screen in an application.
+Among the following options choose the one for which Android is based on Linux.,A) Networking,B) Portability,C) Security,D) All of the above,D)  All of the above are reasons for which Android is based on Linux.
+Among the below virtual machines choose the one which is used by the Android operating system,A) Dalvik Operating System,B) JVM,C) Simple Virtual Machine,D) None of the above, A)  Android uses Dalvik operating system
+Identify the language on which Android is based upon.,A) Python,B) C++,C) Java,D) None of the above,C) Java
+All layout classes are the subclasses of,A) android.widget,B) android.view.View,C) android.view.ViewGroup,D) None of the above, C) all layout classes are the subclasses of android.view.ViewGroup in android.
+ The full form of APK is,A) Android Page Kit,B) Android Phone Kit,C) Android Package Unit,D) Android Photo Kit,C) APK stands for Android package kit.
+What is manifest XML in android?,A) It has information about layout in an application,B) It has all the information about an application,C) It has all the information about activities in an application,D) None of the above, B) It has all the information about an application
+What is the use of a content provider in Android?,A) For sharing the data between applications,B) For Storing the data in the database,C) For sending the data from one application to another,D) None of the above,C) A content provider is used to share information between Android applications.
+While developing android application developers can test their apps on,A) Emulators in an Android SDK,B) Android Phone,C) Third-Party Emulator,D) All the above,D) Apps can be tested in all the sources mentioned above.
+"In android, mini activities are also known as",A) Adapter,B) Activity,C) Fragments,D) None of the above," C) In android, mini activities are also known as Fragments"

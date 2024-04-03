@@ -5,5 +5,6 @@ from .models import *
 
 admin.site.register(Student)
 admin.site.register(Quiz)
+admin.site.register(Admin)
 # # admin.site.register(Degree)
 # admin.site.register(AdminForStudent)
