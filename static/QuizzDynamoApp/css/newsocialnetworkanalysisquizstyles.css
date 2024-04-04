@@ -1,0 +1,61 @@
+/*styling for Social Network Analysis Quiz*/
+.custom-KeyPriorityDepartmentHeading {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.columnDepartment {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.columnKeyPriority,
+.columnSave,
+.columnDepartment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin: 0 55px;
+}
+.buttonColumn {
+    background-color: #008000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px; 
+}
+.buttonColumn:hover {
+    background-color: #006400;
+}
+.question h2 {
+    font-size: 16px; 
+    margin-bottom: 10px; 
+}
+input[type="radio"] {
+    margin-right: 5px;
+}
+.question {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; 
+}
+form {
+    margin-bottom: 20px; 
+}
+button[type="submit"] {
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    background-color: #007bff; 
+    color: #fff;
+    border: none; 
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+button[type="submit"]:hover {
+    background-color: #0056b3; 
+}
