@@ -15,7 +15,7 @@ phases:
 artifacts:
     files:
         - '**/*'
-        
+
 env:
   secrets-manager:
     LOGIN: prod/sonar:sonartoken
