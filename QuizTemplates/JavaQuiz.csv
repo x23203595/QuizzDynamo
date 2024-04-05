@@ -1,11 +1,11 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
 Which of the following option leads to the portability and security of Java?,A) Bytecode is executed by JVM,B) The applet makes the Java code secure and portable,C) Use of exception handling,D) Dynamic binding between objects,A) Bytecode is executed by the JVM.
-Which of the following is not a Java features?,A) Dynamic,B) Architecture Neutral,C) Use of pointers,D) Object-oriented,C) Use of pointers
+Which of the following is not a Java features?,A) Use of pointers,B) Architecture Neutral,C) Dynamic,D) Object-oriented,A) Use of pointers
 The \u0021 article referred to as a,A) Unicode escape sequence,B) Octal escape,C) Hexadecimal,D) Line feed,A) Unicode escape sequence
- _____ is used to find and fix bugs in the Java programs.,A) JVM,B) JRE,C) JDK,D) JDB,D) JDB
+ _____ is used to find and fix bugs in the Java programs.,A) JDB,B) JRE,C) JDK,D) JVM,A) JDB
 Which of the following is a valid declaration of a char?,A) char ch = '\utea';,B) char ca = 'tea';,C) char cr = \u0223;,D) char cc = '\itea';,A) char ch = '\utea';
-What is the return type of the hashCode() method in the Object class?,A) Object,B) int,C) long,D) void,B) int
-Which of the following is a valid long literal?,A) ABH8097,B) L990023,C) 904423,D) 0xnf029L,D) 0xnf029L
-What does the expression float a = 35 / 0 return?,A) 0,B) Not a Number,C) Infinity,D) Run time Exception,C) Infinity
-" Evaluate the following Java expression, if x=3, y=5, and z=10: ++z + y - y + z + x++",A) 24,B) 23,C) 20,D) 25,D) 25
-Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?,A) javap tool,B) javaw command,C) Javadoc tool,D) javah command,C) Javadoc tool
+What is the return type of the hashCode() method in the Object class?,A) int,B) Object ,C) long,D) void,A) int
+Which of the following is a valid long literal?,A) 0xnf029L,B) L990023,C) 904423,D) ABH8097,A) 0xnf029L
+What does the expression float a = 35 / 0 return?,A) Infinity,B) Not a Number,C) 0,D) Run time Exception,A) Infinity
+" Evaluate the following Java expression, if x=3, y=5, and z=10: ++z + y - y + z + x++",A) 25,B) 23,C) 20,D) 25,A) 25
+Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?,A) Javadoc tool,B) javaw command,C) javap tool,D) javah command,A) Javadoc tool

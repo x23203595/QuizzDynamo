@@ -1,11 +1,11 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
-Dijkstra’s algorithm is used to solve __________  problems?,A) Network Lock,B) Single source shortest path,C) All pair shortest path,D) Sorting,B) Dijkstra’s algorithm is used to solve single source shortest path problems.
-The Bellmann Ford Algorithm returns __________  value?,A) String,B) Boolean,C) Double,D) Integer,B) The Bellmann Ford Algorithm returns a boolean value.
-Representation of data structure in memory is known as?,A) Storage structure,B) file structure,C) Recursive,D) Abstract Data type,D) Representation of data structure in memory is known as Abstract Data Type.
-To main measures of the efficiency of an algorithm are?,A) Time and Space Complexity,B) Data and Space,C) Processor & Memory,D) Complexity & Capacity,A) Time and space complexity are the main measures of the efficiency of an algorithm.
-Which of the following sorting algorithms provide the best time complexity in the worst-case scenario?,A) Merge Sort,B) Quick Sort,C) Bubble Sort ,D) Selection Sort,A) Merge Sort will always have a time complexity of O(n * logn) which is the best in the worst case among these algorithms.
-Which of the following is a Divide and Conquer algorithm?,A) Bubble Sort ,B) Selection Sort,C) Heap Sort,D) Merge Sort,D) Merge Sort is a Divide and Conquer algorithm.
-Which of the following data structure is used to perform recursion?,A) Linked List,B) Array,C) Queue,D) Stack,C) Stack is used for performing recursion.
-Identify the best case time complexity of selection sort?,A) O(nlogn),B) O(n^2),C) O(n),D) O(10, B) The best case time complexity of selection sort is O(n^2).
-Another name of the fractional knapsack is?,A) Non-continuous knapsack problem,B) Divisible Knapsack Problem,C) 0/1 Knapsack problem,D) Continuous Knapsack Problem,D) Fractional knapsack is also known as the continuous knapsack problem.
-"When a pop() operation is called on an empty queue, what is the condition called?",A) Overflow,B) Underflow,C) Syntax Error,D) Garbage Value,A) Underflow
+Dijkstra’s algorithm is used to solve __________  problems?,A) Single source shortest path,B) Network Lock,C) All pair shortest path,D) Sorting,A) Single source shortest path
+The Bellmann Ford Algorithm returns __________  value?,A) Boolean,B) String,C) Double,D) Integer,A) Boolean
+Representation of data structure in memory is known as?,A) Abstract Data type,B) file structure,C) Recursive,D) Storage structure,A) Abstract Data type
+To main measures of the efficiency of an algorithm are?,A) Time and Space Complexity,B) Data and Space,C) Processor & Memory,D) Complexity & Capacity,A) Time and Space Complexity
+Which of the following sorting algorithms provide the best time complexity in the worst-case scenario?,A) Merge Sort,B) Quick Sort,C) Bubble Sort ,D) Selection Sort,A) Merge Sort
+Which of the following is a Divide and Conquer algorithm?,A) Merge Sort  ,B) Selection Sort,C) Heap Sort,D) Bubble Sort ,A) Merge Sort
+Which of the following data structure is used to perform recursion?,A) Stack,B) Array,C) Queue,D) Linked List,A) Stack
+Identify the best case time complexity of selection sort?,A) O(n^2),B) O(nlogn),C) O(n),D) O(10,A) O(n^2)
+Another name of the fractional knapsack is?,A) Continuous Knapsack Problem,B) Divisible Knapsack Problem,C) 0/1 Knapsack problem,D) Non-Continuous Continuous Knapsack Problem,A) Continuous Knapsack Problem
+"When a pop() operation is called on an empty queue, what is the condition called?",A) Underflow,B) Overflow,C) Syntax Error,D) Garbage Value,A) Underflow

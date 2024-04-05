@@ -1,11 +1,11 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
-What does PoP stand for?,A) Pre Office Protocol,B) Post Office Protocol,C) Protocol of Post,D) None,B) PoP stands for Post Office Protocol
-What is the port number of PoP,A) 35,B) 43,C) 110,D) 25,C) The ports number of PoP is 110
-What is the number of layers in the OSI model?,A) 2 layers,B) 4 layers,C) 7 layers ,D) 9 layers,C) OSI model consists of 7 layers
-The full form of OSI is ,A) Operating Systems Interface,B) Optical System interconnection,C) Operating System Internet,D) Open System Interconnection,D) OSI stands for Open system interconnection.
-Identify the layer which provides service to the user,A) Session layer ,B) Application layer,C) Presentation layer,D) Physical layer,B) Application layer provides service to the user.
-Components used for interconnecting dissimilar networks that use different communication protocols,a) Switches,b) Gateways,c) Routers,d) Bridges,b) Gateways
- A topology is a modified version of the basic star topology.,A) network,B) two-tiered,C) bus,D) ring,B) two-tiered
-A topology that involves Tokens.,A) Star,B) ring,C) Bus,D) Daisy Chaining,B) Ring
-Identify the full form of HTTP?,A) HyperText Transfer Protocol,B) HyperText Transfer Package,C) Hyper Transfer Text Package,D) Hyper Transfer Text Practice,A)  HTTPS stands for HyperText Transfer Protocol
-WANs that need to interconnect a very large number of sites.,A) bus,B)  two-tiered,C) three-tiered,D) ring,C) three-tiered
+What does PoP stand for?,A) Post Office Protocol,B) Pre Office Protocol,C) Protocol of Post,D) None,A) Post Office Protocol
+What is the port number of PoP,A) 110,B) 35,C) 110,D) 25,A) 110
+What is the number of layers in the OSI model?,A) 7 layers ,B) 4 layers,C) 2 layers,D) 9 layers,A) 7 layers 
+The full form of OSI is ,A) Open System Interconnection,B) Optical System interconnection,C) Operating System Internet,D) Operating Systems Interface,A) Open System Interconnection
+Identify the layer which provides service to the user,A) Application layer,B) Session layer,C) Presentation layer,D) Physical layer,A) Application layer
+Components used for interconnecting dissimilar networks that use different communication protocols,A) Gateways,B) Switches,C) Routers,D) Bridges,A) Gateways
+ A topology is a modified version of the basic star topology.,A) two-tiered,B) network,C) bus,D) ring,A) two-tiered
+A topology that involves Tokens.,A) ring,B) Star,C) Bus,D) Daisy Chaining,A) ring
+Identify the full form of HTTP?,A) HyperText Transfer Protocol,B) HyperText Transfer Package,C) Hyper Transfer Text Package,D) Hyper Transfer Text Practice,A) HyperText Transfer Protocol
+WANs that need to interconnect a very large number of sites.,A) three-tiered,B)  two-tiered,C) bus,D) ring,A) three-tiered

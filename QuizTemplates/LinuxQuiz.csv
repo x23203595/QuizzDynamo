@@ -1,12 +1,11 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
-"Which of the following command is used to count the total number of lines, words, and characters contained in a file?",A) wc,B) wcount,C) countw,D) None of the Above,"A) wc is used to count the total number of lines, words, and characters contained in a file."
-Identify the command which is used to remove files.,A) delete,B) rm,C) dm,D) erase,B) rm is used to remove files.
-Identify the hardware structure which is not supported by Red Hat?,A) IBM-Compatible,B) Alpha,C) SPARC,D) Macintosh,D) Macintosh is not supported by Red Hat.
-Among the following command which is used with vi editors to delete a single character?,A) a,B) x,C) y,D) z,B) x is used with vi editors to delete a single character.
-Choose the TCP/IP Protocol which is used for remote terminal connection service?,A) FTP,B) UDP,C) RARP,D) TELNET,D) TELNET is used for remote terminal connection service.
-Which of the following command is used to add a new user to the system?,A) Using Linuxconf,B) Using adduser,C) Using useradd,D) All of the Above,D) All of the above is used to add a new is a to the system
-Identify the one which is not a communication command,A) mail,B) mseg,C) grep,D) write,C) grep is not a communication command
-"By default, which port does squid listen to?",A) 4322,B) 3128,C) 7334,D) 2314,B) Squid listens by default port 3128
-Identify the command used to add printing jobs to the queue.,A) lpd,B) lpq,C) lpc,D) lpr,D) lpr is used to add printing jobs to the queue
-Choose the server which is used with the BIND package?,A) shttp,B) dns,C) named,D) httpd,C) named is used with the BIND package.
-,,,,,
+"Which of the following command is used to count the total number of lines, words, and characters contained in a file?",A) wc,B) wcount,C) countw,D) None of the Above,A) wc
+Identify the command which is used to remove files.,A) rm,B) delete ,C) dm,D) erase,A) rm
+Identify the hardware structure which is not supported by Red Hat?,A) Macintosh,B) Alpha,C) SPARC,D) IBM-Compatible ,A) Macintosh
+Among the following command which is used with vi editors to delete a single character?,A) x,B) a,C) y,D) z,A) x
+Choose the TCP/IP Protocol which is used for remote terminal connection service?,A) TELNET,B) UDP,C) RARP,D) FTP,A) TELNET
+Which of the following command is used to add a new user to the system?,A) All of the Above,B) Using adduser,C) Using useradd,D) Using Linuxconf,A) All of the Above
+Identify the one which is not a communication command,A) grep,B) mseg,C) mail,D) write,A) grep
+"By default, which port does squid listen to?",A) 3128,B) 4322,C) 7334,D) 2314,A) 3128
+Identify the command used to add printing jobs to the queue.,A) lpr,B) lpq,C) lpc,D) lpd,A) lpr
+Choose the server which is used with the BIND package?,A) named,B) dns,C) shttp,D) httpd,A) named

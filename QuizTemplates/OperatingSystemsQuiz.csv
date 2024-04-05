@@ -1,22 +1,11 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
-What is the purpose of an operating system?,A) Manage hardware resources,B) Execute application programs,C) Provide user interface,D) All of the above,Correct Answer: D
-What is virtual memory in an operating system?,A) It is a type of memory used for virtual machines,B) It allows programs to use more memory than is actually available,C) It is a memory storage device used in cloud computing,D) It is a type of memory used for video processing,Correct Answer: B
-Which scheduling algorithm provides the highest average turnaround time?,A) Round Robin,B) First Come First Serve (FCFS),C) Shortest Job Next (SJN),D) Priority Scheduling,Correct Answer: B
-What is a deadlock in operating systems?,A) It is a situation where a process is waiting indefinitely for resources held by other processes,"B) It is a situation where two processes are waiting for each other to release resources, causing both to wait indefinitely",C) It is a situation where a process terminates unexpectedly,D) It is a situation where the operating system crashes,Correct Answer: B
-"What is the purpose of the ""fork"" system call in Unix-like operating systems?",A) To create a new process,B) To terminate a process,C) To wait for a child process to finish,D) To execute a command in the shell,Correct Answer: A
-What is a kernel in operating systems?,A) It is the central processing unit (CPU),B) It is the part of the operating system responsible for managing hardware resources,C) It is the part of the operating system responsible for user interface,D) It is a type of file system,Correct Answer: B
-What is a page fault in operating systems?,A) It occurs when a page in memory is accessed for the first time,B) It occurs when a page in memory is accessed and is not currently loaded in RAM,C) It occurs when a page in memory is corrupted,D) It occurs when a page in memory is locked by another process,Correct Answer: B
-"What is the purpose of the ""chmod"" command in Unix-like operating systems?",A) To change the modification time of a file,B) To change the ownership of a file,C) To change the permissions of a file,D) To change the file type,Correct Answer: C
-What is a semaphore in operating systems?,A) It is a type of memory,B) It is a synchronization primitive used to control access to shared resources,C) It is a type of file system,D) It is a hardware component,Correct Answer: B
-"What is the purpose of the ""grep"" command in Unix-like operating systems?",A) To search for files containing specific text,B) To list all files in a directory,C) To copy files from one directory to another,D) To delete files,Correct Answer: A
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
+What is the purpose of an operating system?,A) All of the above,B) Execute application programs,C) Provide user interface,D) Manage hardware resources,A) All of the above
+What is virtual memory in an operating system?,A) It allows programs to use more memory than is actually available,B) It is a type of memory used for virtual machines,C) It is a memory storage device used in cloud computing,D) It is a type of memory used for video processing,A) It allows programs to use more memory than is actually available
+Which scheduling algorithm provides the highest average turnaround time?,A) First Come First Serve (FCFS),B) Round Robin,C) Shortest Job Next (SJN),D) Priority Scheduling,A) First Come First Serve (FCFS)
+What is a deadlock in operating systems?,"A) It is a situation where two processes are waiting for each other to release resources, causing both to wait indefinitely","B)  It is a situation where two processes are waiting for each other to release resources, causing both to wait indefinitely",C) It is a situation where a process terminates unexpectedly,D) It is a situation where the operating system crashes,"A) It is a situation where two processes are waiting for each other to release resources, causing both to wait indefinitely"
+"What is the purpose of the ""fork"" system call in Unix-like operating systems?",A) To create a new process,B) To terminate a process,C) To wait for a child process to finish,D) To execute a command in the shell,A) To create a new process
+What is a kernel in operating systems?,A) It is the part of the operating system responsible for managing hardware resources,B) It is the central processing unit (CPU),C) It is the part of the operating system responsible for user interface,D) It is a type of file system,A) It is the part of the operating system responsible for managing hardware resources
+What is a page fault in operating systems?,A) It occurs when a page in memory is accessed and is not currently loaded in RAM,B) It occurs when a page in memory is accessed for the first time ,C) It occurs when a page in memory is corrupted,D) It occurs when a page in memory is locked by another process,A) It occurs when a page in memory is accessed and is not currently loaded in RAM
+"What is the purpose of the ""chmod"" command in Unix-like operating systems?",A) To change the ownership of a file,B) To change the modification time of a file ,C) To change the permissions of a file,D) To change the file type,A) To change the permissions of a file
+What is a semaphore in operating systems?,A) It is a synchronization primitive used to control access to shared resources,B) It is a type of memory ,C) It is a type of file system,D) It is a hardware component,A) It is a synchronization primitive used to control access to shared resources
+"What is the purpose of the ""grep"" command in Unix-like operating systems?",A) To list all files in a directory,B) To search for files containing specific text,C) To copy files from one directory to another,D) To delete files,A) To list all files in a directory
