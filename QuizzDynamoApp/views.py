@@ -1,7 +1,6 @@
 """View for QuizzDynamo"""
 import csv
 import io
-from django.views.decorators.http import require_http_methods
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -11,7 +10,6 @@ from django.http import JsonResponse
 from .models import Student, Quiz, Admin
 from .forms import StudentSignUpForm, StudentSignInForm, AdminSignInForm
 
-@require_http_methods(["POST"])
 def WelcomePageMethod(request):
     """Welcome Page for QuizzDynamo. Loads StudentSignUpForm and it's fields in 
     the page"""
