@@ -4,7 +4,7 @@ The Bellmann Ford Algorithm returns __________  value?,A) Boolean,B) String,C) 
 Representation of data structure in memory is known as?,A) Abstract Data type,B) file structure,C) Recursive,D) Storage structure,A) Abstract Data type
 To main measures of the efficiency of an algorithm are?,A) Time and Space Complexity,B) Data and Space,C) Processor & Memory,D) Complexity & Capacity,A) Time and Space Complexity
 Which of the following sorting algorithms provide the best time complexity in the worst-case scenario?,A) Merge Sort,B) Quick Sort,C) Bubble Sort ,D) Selection Sort,A) Merge Sort
-Which of the following is a Divide and Conquer algorithm?,A) Merge Sort  ,B) Selection Sort,C) Heap Sort,D) Bubble Sort ,A) Merge Sort
+Which of the following is a Divide and Conquer algorithm?,A) Merge Sort  ,B) Selection Sort,C) Heap Sort,D) Bubble Sort ,A) Merge Sort  
 Which of the following data structure is used to perform recursion?,A) Stack,B) Array,C) Queue,D) Linked List,A) Stack
 Identify the best case time complexity of selection sort?,A) O(n^2),B) O(nlogn),C) O(n),D) O(10,A) O(n^2)
 Another name of the fractional knapsack is?,A) Continuous Knapsack Problem,B) Divisible Knapsack Problem,C) 0/1 Knapsack problem,D) Non-Continuous Continuous Knapsack Problem,A) Continuous Knapsack Problem

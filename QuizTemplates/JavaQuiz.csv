@@ -1,5 +1,5 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
-Which of the following option leads to the portability and security of Java?,A) Bytecode is executed by JVM,B) The applet makes the Java code secure and portable,C) Use of exception handling,D) Dynamic binding between objects,A) Bytecode is executed by the JVM.
+Which of the following option leads to the portability and security of Java?,A) Bytecode is executed by JVM,B) The applet makes the Java code secure and portable,C) Use of exception handling,D) Dynamic binding between objects,A) Bytecode is executed by JVM
 Which of the following is not a Java features?,A) Use of pointers,B) Architecture Neutral,C) Dynamic,D) Object-oriented,A) Use of pointers
 The \u0021 article referred to as a,A) Unicode escape sequence,B) Octal escape,C) Hexadecimal,D) Line feed,A) Unicode escape sequence
  _____ is used to find and fix bugs in the Java programs.,A) JDB,B) JRE,C) JDK,D) JVM,A) JDB

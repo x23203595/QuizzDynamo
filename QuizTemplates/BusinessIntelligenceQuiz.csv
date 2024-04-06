@@ -1,6 +1,6 @@
 ﻿question_text,option_a,option_b,option_c,option_d,correct_answer
 What is the primary goal of Business Intelligence (BI)?,A) To analyze data,B) To collect data,C) To visualize data,D) To store data,A) To analyze data
-Which of the following is NOT a component of BI?,A)  Customer Relationship Management (CRM),B) Data Mining,C) Decision Support System (DSS),D) Customer Relationship Management (CRM),A) Customer Relationship Management (CRM)
+Which of the following is NOT a component of BI?,A)  Customer Relationship Management (CRM),B) Data Mining,C) Decision Support System (DSS),D) Customer Relationship Management (CRM),A)  Customer Relationship Management (CRM)
 Which data visualization technique is used to show hierarchical data structures?,A) Tree Map,B) Pie Chart,C) Scatter Plot ,D) Line Graph,A) Tree Map
 What is OLAP in the context of Business Intelligence?,A) Online Analytical Processing,B) Online Analytical Programming,C) Online Analytical Presentation,D) Online Analytical Prediction,A) Online Analytical Processing
 Which type of analysis is used to discover hidden patterns in large datasets?,A) Predictive Analysis,B) Descriptive Analysis,C) Diagnostic Analysis,D) Prescriptive Analysis,A) Predictive Analysis
